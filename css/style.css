@@ -1,0 +1,7015 @@
+/* =======================================================
+   FILE: style.css
+   Ghi chú: CSS này chỉ dựng KHUNG BỐ CỤC (layout) tối giản.
+   Toàn bộ màu sắc, font, hiệu ứng nằm trong các biến CSS
+   bên dưới (:root) để team thiết kế dễ dàng thay thế mà
+   không cần sửa cấu trúc HTML/CSS.
+   ======================================================= */
+
+:root {
+  color-scheme: light;
+
+  --color-primary: #1e5631;
+  --color-primary-dark: #143d22;
+  --color-secondary: #f2b705;
+  --color-bg: #ffffff;
+  --color-bg-alt: #f5f6f7;
+  --color-text: #222222;
+  --color-text-muted: #666666;
+  --color-border: #e0e0e0;
+
+  --font-base: "Segoe UI", Roboto, Arial, sans-serif;
+  --font-size-base: 16px;
+
+  --container-width: 1200px;
+  --header-height: 88px;
+  --radius: 8px;
+  --transition: 0.25s ease;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-base);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===================== HEADER / NAV ===================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  min-height: var(--header-height);
+  padding: 10px 24px;
+  gap: 16px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1560px) {
+  .header-inner {
+    max-width: calc(100% - 48px);
+  }
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.logo-img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.site-name {
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  line-height: 1.25;
+}
+
+.slogan {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-primary-dark);
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  gap: 18px;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 14px;
+}
+
+.nav-list a {
+  font-weight: 500;
+  padding: 8px 4px;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: border-color var(--transition), color var(--transition);
+}
+
+.nav-list a:hover,
+.nav-list a.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.search-form input {
+  border: none;
+  padding: 8px 10px;
+  outline: none;
+  font-family: inherit;
+  min-width: 110px;
+  width: 140px;
+}
+
+.search-form button {
+  border: none;
+  background: var(--color-bg-alt);
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-left: auto;
+  background: none;
+  background-color: transparent !important;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 3px;
+  background: var(--color-text);
+  border-radius: 2px;
+}
+
+/* ===================== BANNER ===================== */
+.banner {
+  line-height: 0;
+}
+
+.banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.banner h1 {
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+}
+
+.banner p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 28px;
+}
+
+.banner-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  transition: transform var(--transition), background-color var(--transition);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background-color: var(--color-secondary);
+  color: var(--color-primary-dark);
+}
+
+.btn-outline {
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+/* ===================== SECTIONS CHUNG ===================== */
+.section {
+  padding: 48px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: var(--color-primary);
+}
+
+.section-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.see-all-link {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.loading-text {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+/* ===================== THÔNG BÁO ===================== */
+.announcements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.announcement-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  background-color: var(--color-bg-alt);
+  border-left: 4px solid var(--color-secondary);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: inherit;
+  transition: background-color var(--transition);
+}
+
+a.announcement-item:hover {
+  background-color: var(--color-border);
+}
+
+.announcement-arrow {
+  margin-left: auto;
+  color: var(--color-primary);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.announcement-item .badge {
+  flex-shrink: 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: var(--color-secondary);
+  color: var(--color-primary-dark);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.announcement-item .content strong {
+  display: block;
+  margin-bottom: 2px;
+}
+
+.announcement-item .content span.date {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.quick-links {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.quick-link-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background-color: var(--color-bg-alt);
+  border-radius: var(--radius);
+  font-weight: 500;
+  transition: background-color var(--transition);
+}
+
+.quick-link-item:hover {
+  background-color: var(--color-border);
+}
+
+/* ===================== TIN TỨC ===================== */
+.news-filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background-color: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.news-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 420px;
+  transition: box-shadow var(--transition);
+}
+
+.news-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.news-card-img-wrap {
+  width: 100%;
+  height: 180px;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.news-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.news-card-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.news-card-title-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.news-card-category {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.news-card-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 3.2em;
+}
+
+.news-card-excerpt {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 4.8em;
+}
+
+.news-card-excerpt.expanded {
+  display: block;
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}
+
+.news-card-readmore-btn {
+  margin-top: auto;
+  padding-top: 8px;
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  align-self: flex-start;
+  font-family: inherit;
+}
+
+.news-card-readmore-btn:hover {
+  text-decoration: underline;
+}
+
+.news-card-meta {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  display: flex;
+  justify-content: space-between;
+}
+
+.no-results {
+  color: var(--color-text-muted);
+  font-style: italic;
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 24px 0;
+}
+
+/* ===================== BANNER PHỤ (các trang con) ===================== */
+.page-banner {
+  background-color: var(--color-bg-alt);
+  padding: 32px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.page-banner h1 {
+  font-size: 1.6rem;
+  color: var(--color-primary);
+}
+
+/* ===================== LỊCH SỬ THÀNH LẬP ===================== */
+.founder-box {
+  background-color: var(--color-bg-alt);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 32px;
+}
+
+.founder-year,
+.founder-name {
+  margin-bottom: 6px;
+}
+
+.founder-desc {
+  color: var(--color-text-muted);
+  margin-top: 10px;
+}
+
+.subsection-title {
+  font-size: 1.15rem;
+  color: var(--color-primary);
+  margin-bottom: 20px;
+}
+
+/* ===================== TIMELINE (các đời chỉ huy) ===================== */
+.timeline {
+  position: relative;
+  padding-left: 28px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background-color: var(--color-border);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 28px;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -28px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  border: 3px solid var(--color-bg);
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+.timeline-period {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  background-color: var(--color-primary-dark);
+  padding: 2px 10px;
+  border-radius: 999px;
+  margin-bottom: 6px;
+}
+
+.timeline-term-name {
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+}
+
+.timeline-leader {
+  margin-bottom: 4px;
+}
+
+.timeline-note {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+/* ===================== MỤC TIÊU HOẠT ĐỘNG ===================== */
+.goals-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.goals-list li {
+  position: relative;
+  padding-left: 28px;
+}
+
+.goals-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* ===================== SƠ ĐỒ CƠ CẤU TỔ CHỨC (dạng cây) ===================== */
+.org-chart-wrapper {
+  overflow-x: auto;
+  padding: 20px 0;
+}
+
+.org-tree,
+.org-children {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.org-children {
+  padding-top: 32px;
+  gap: 16px;
+}
+
+.org-node {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 12px;
+}
+
+.org-node .org-children::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 20px;
+  background-color: var(--color-border);
+  transform: translateX(-50%);
+}
+
+.org-children > .org-node::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  width: 2px;
+  height: 20px;
+  background-color: var(--color-border);
+}
+
+.org-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-bg);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius);
+  padding: 10px 16px;
+  min-width: 140px;
+  text-align: center;
+}
+
+.org-title {
+  color: var(--color-primary);
+  font-size: 0.9rem;
+}
+
+.org-name {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+/* ===================== CƠ CẤU TỔ CHỨC (trang công khai) — GOM NHÓM THEO CẤP BẬC ===================== */
+.org-level-section {
+  margin-bottom: 40px;
+}
+
+.org-level-section:last-child {
+  margin-bottom: 0;
+}
+
+.org-level-section-title {
+  text-align: center;
+  font-size: 1.15rem;
+  margin-bottom: 20px;
+  position: relative;
+  color: var(--color-primary);
+}
+
+.org-cards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.org-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+  width: var(--op-card-w, 200px);
+  min-height: var(--op-card-h, auto);
+  padding: var(--op-pad-y, 20px) var(--op-pad-x, 16px);
+  border: var(--op-border-w, 1px) solid var(--op-border-color, var(--color-border));
+  border-radius: var(--radius);
+  cursor: pointer;
+  background-color: var(--color-bg);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.org-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.org-card-img {
+  width: var(--op-avatar, 100px);
+  height: var(--op-avatar, 100px);
+  object-fit: cover;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-color: var(--color-bg-alt);
+  border: 2px solid var(--color-border);
+  margin-bottom: 8px;
+}
+
+.org-card-icon {
+  font-size: var(--op-icon-size, 1.8rem);
+  flex-shrink: 0;
+}
+
+.org-card-title {
+  display: block;
+  color: var(--color-text-muted);
+  font-size: var(--op-title-size, 0.8rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 4px;
+}
+
+.org-card-name {
+  display: block;
+  color: var(--color-text);
+  font-size: var(--op-name-size, 1.15rem);
+  font-weight: 700;
+}
+
+.admin-footer-link {
+  opacity: 0.5;
+}
+
+/* ===================== TRANG ĐĂNG NHẬP ADMIN ===================== */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-alt);
+  padding: 20px;
+}
+
+.auth-box {
+  background-color: var(--color-bg);
+  border-radius: var(--radius);
+  padding: 40px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.auth-title {
+  color: var(--color-primary);
+  font-size: 1.4rem;
+  margin-bottom: 4px;
+}
+
+.auth-subtitle {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+
+.auth-form label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.auth-form input {
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.auth-form .btn {
+  margin-top: 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.auth-error {
+  background-color: #fdecea;
+  color: #b3261e;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+.remember-me-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.remember-me-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.auth-back-link {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* ===================== HEADER KHU VỰC ADMIN ===================== */
+.admin-header {
+  background-color: var(--color-primary-dark);
+  color: #fff;
+}
+
+.admin-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  gap: 16px;
+}
+
+.admin-header-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.admin-back-link {
+  color: #fff;
+  opacity: 0.8;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.admin-back-link:hover {
+  opacity: 1;
+}
+
+.admin-header-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.btn-outline-dark {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color var(--transition);
+}
+
+.btn-outline-dark:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.admin-main {
+  padding: 40px 20px;
+}
+
+/* ===================== ADMIN DASHBOARD — LƯỚI THẺ ĐIỀU HƯỚNG ===================== */
+.admin-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.admin-card {
+  display: block;
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  text-align: center;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.admin-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.admin-card-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.admin-card h2 {
+  font-size: 1.05rem;
+  color: var(--color-primary);
+  margin-bottom: 6px;
+}
+
+.admin-card p {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.admin-card-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===================== ADMIN — FORM THÊM/SỬA (CRUD) ===================== */
+.admin-section {
+  margin-bottom: 48px;
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 480px;
+}
+
+.admin-form label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.admin-form input[type="text"],
+.admin-form input[type="file"],
+.admin-form select,
+.admin-form textarea {
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+.admin-form .btn {
+  margin-top: 20px;
+  border: none;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.required {
+  color: #b3261e;
+}
+
+.admin-message {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+}
+
+.admin-message-success {
+  background-color: #e6f4ea;
+  color: #1e5631;
+}
+
+.admin-message-error {
+  background-color: #fdecea;
+  color: #b3261e;
+}
+
+.admin-hint {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 16px;
+}
+
+/* ===================== ADMIN — DANH SÁCH CÓ THỂ SỬA TRỰC TIẾP ===================== */
+.admin-positions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.admin-position-row {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 16px;
+  align-items: start;
+  padding: 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.admin-position-thumb {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  background-color: var(--color-bg-alt);
+}
+
+.admin-position-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.admin-position-fields label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 6px;
+}
+
+.admin-position-fields input[type="text"],
+.admin-position-fields input[type="file"],
+.admin-position-fields select,
+.admin-position-fields textarea {
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.admin-position-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.admin-position-actions .btn {
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 0.85rem;
+  padding: 8px 14px;
+}
+
+.btn-danger {
+  background-color: #fdecea;
+  color: #b3261e;
+}
+
+.btn-danger:hover {
+  background-color: #fadbd8;
+}
+
+@media (max-width: 600px) {
+  .admin-position-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===================== SỰ KIỆN (trang công khai) ===================== */
+.events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.event-card {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 20px;
+  transition: box-shadow var(--transition);
+}
+
+.event-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.event-card-past {
+  opacity: 0.6;
+}
+
+.event-card-main {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.event-card-img {
+  width: 100%;
+  height: 400px;
+  object-fit: contain;
+  background-color: var(--color-bg-alt);
+  border-radius: var(--radius);
+  flex-shrink: 0;
+}
+
+.event-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.event-card-date {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.event-card-title {
+  font-size: 1.2rem;
+}
+
+.event-card-location,
+.event-card-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.event-past-label {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+  margin-top: 8px;
+}
+
+.event-card-register {
+  border-left: 1px solid var(--color-border);
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.btn-toggle-register {
+  align-self: flex-start;
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.register-form {
+  margin-top: 14px;
+  padding: 16px;
+  background-color: var(--color-bg-alt);
+  border-left: 3px solid var(--color-primary);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.register-form label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.register-form input {
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+.register-form button {
+  margin-top: 14px;
+  border: none;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.register-message {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+}
+
+.register-message-success {
+  background-color: #e6f4ea;
+  color: #1e5631;
+}
+
+.register-message-error {
+  background-color: #fdecea;
+  color: #b3261e;
+}
+
+@media (max-width: 600px) {
+  .event-card {
+    grid-template-columns: 1fr;
+  }
+
+  .event-card-img {
+    width: 100%;
+    height: 180px;
+  }
+
+  .event-card-register {
+    border-left: none;
+    border-top: 1px solid var(--color-border);
+    padding-left: 0;
+    padding-top: 16px;
+    margin-top: 16px;
+  }
+}
+
+/* ===================== ADMIN — SỰ KIỆN: xem danh sách đăng ký ===================== */
+.btn-toggle-registrations {
+  margin-top: 10px;
+  padding: 8px 14px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.85rem;
+  align-self: flex-start;
+}
+
+.btn-toggle-registrations:hover {
+  background-color: var(--color-bg-alt);
+}
+
+.registrations-list {
+  margin-top: 12px;
+  padding: 12px;
+  background-color: var(--color-bg-alt);
+  border-radius: var(--radius);
+}
+
+.registrations-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.registrations-table th,
+.registrations-table td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.registrations-table th {
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.btn-delete-registration {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* ===================== ADMIN — THỐNG KÊ: SỐ LIỆU TỔNG QUAN ===================== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.stat-icon {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+.stat-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+/* ===================== ADMIN — DANH SÁCH ĐƠN GIẢN (thành viên) ===================== */
+.admin-simple-list {
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+/* ===================== ADMIN — LƯỚI ẢNH THƯ VIỆN ===================== */
+.gallery-admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.gallery-admin-item {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-admin-item img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.gallery-caption {
+  padding: 8px 10px;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  flex: 1;
+}
+
+.gallery-admin-item .btn {
+  margin: 0 10px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+/* ===================== THƯ VIỆN ẢNH (trang công khai) ===================== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.gallery-item {
+  cursor: pointer;
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  transition: transform var(--transition);
+}
+
+.gallery-item:hover {
+  transform: scale(1.03);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===================== LIGHTBOX (phóng to ảnh) ===================== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 40px;
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: #fff;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition);
+}
+
+.lightbox-nav:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.lightbox-prev {
+  left: 20px;
+}
+
+.lightbox-next {
+  right: 20px;
+}
+
+@media (max-width: 600px) {
+  .lightbox-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1.4rem;
+  }
+
+  .lightbox-prev {
+    left: 8px;
+  }
+
+  .lightbox-next {
+    right: 8px;
+  }
+}
+
+/* ===================== TRANG LIÊN HỆ ===================== */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 48px;
+}
+
+.contact-info-item {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.contact-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.contact-info-item strong {
+  display: block;
+  margin-bottom: 2px;
+}
+
+.contact-info-item p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.contact-info-item a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact-form label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+.contact-form button {
+  margin-top: 20px;
+  border: none;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+@media (max-width: 800px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===================== TRANG LỖI 404 ===================== */
+.error-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  background-color: var(--color-bg-alt);
+}
+
+.error-box {
+  max-width: 440px;
+}
+
+.error-code {
+  font-size: 5rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.error-title {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+}
+
+.error-desc {
+  color: var(--color-text-muted);
+  margin-bottom: 28px;
+}
+
+.error-actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.error-actions .btn-outline {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* ===================== ADMIN — TIN NHẮN LIÊN HỆ ===================== */
+.unread-badge {
+  background-color: var(--color-secondary);
+  color: var(--color-primary-dark);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.admin-messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.admin-message-card {
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+.admin-message-card.message-unread {
+  border-left-color: var(--color-primary);
+  background-color: var(--color-bg-alt);
+}
+
+.admin-message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.admin-message-email {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.admin-message-date {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.admin-message-body {
+  color: var(--color-text);
+  margin-bottom: 12px;
+  white-space: pre-wrap;
+}
+
+.admin-message-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-mark-read {
+  padding: 6px 14px;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  background: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.btn-mark-read:hover {
+  background-color: var(--color-bg-alt);
+}
+
+.read-label {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.btn-delete-message {
+  padding: 6px 14px;
+  border: 1px solid transparent;
+  background: none;
+  color: #b3261e;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.btn-delete-message:hover {
+  text-decoration: underline;
+}
+
+/* ===================== THÀNH TÍCH (trang Giới thiệu, công khai) ===================== */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.achievement-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow var(--transition);
+}
+
+.achievement-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.achievement-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  background-color: var(--color-bg-alt);
+}
+
+.achievement-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.achievement-year {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  background-color: var(--color-secondary);
+  padding: 2px 10px;
+  border-radius: 999px;
+}
+
+.achievement-title {
+  font-size: 1.05rem;
+}
+
+.achievement-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* ===================== KHU VỰC ĐĂNG NHẬP (góc phải header) ===================== */
+.auth-control {
+  display: flex;
+  align-items: center;
+}
+
+.login-link {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #fff;
+  white-space: nowrap;
+  background-color: var(--color-primary);
+  padding: 8px 18px;
+  border-radius: var(--radius);
+  border-bottom: none;
+  transition: background-color var(--transition);
+}
+
+.login-link:hover {
+  background-color: var(--color-primary-dark);
+  color: #fff;
+  border-bottom: none;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+
+.user-greeting {
+  font-size: 0.85rem;
+  color: var(--color-text);
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.admin-panel-link {
+  padding: 6px 14px;
+  background-color: var(--color-secondary);
+  color: var(--color-primary-dark);
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.logout-btn {
+  padding: 6px 14px;
+  border: 1px solid var(--color-border);
+  background: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.logout-btn:hover {
+  background-color: var(--color-bg-alt);
+}
+
+/* ===================== TRANG CHI TIẾT TIN TỨC ===================== */
+.back-link {
+  display: inline-block;
+  margin: 24px 0;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.news-detail {
+  max-width: 760px;
+  margin: 0 auto 60px;
+}
+
+.news-detail-category {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background-color: var(--color-bg-alt);
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.news-detail-title {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.news-detail-meta {
+  display: flex;
+  gap: 20px;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.news-detail-img {
+  display: block;
+  max-width: 100%;
+  max-height: 640px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius);
+  margin: 0 auto 28px;
+}
+
+.news-detail-body {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--color-text);
+  white-space: pre-wrap;
+}
+
+/* ===================== ADMIN — NHIỀU ẢNH TRONG 1 BÀI ===================== */
+.admin-multi-thumb-col {
+  min-width: 90px;
+}
+
+.admin-thumb-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-width: 96px;
+}
+
+.admin-thumb-item {
+  position: relative;
+  width: 44px;
+  height: 44px;
+}
+
+.admin-thumb-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+}
+
+.btn-remove-thumb {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: none;
+  background-color: #b3261e;
+  color: #fff;
+  font-size: 0.65rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-remove-thumb:hover {
+  background-color: #8f1e18;
+}
+
+.admin-no-image {
+  width: 80px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  background-color: var(--color-bg-alt);
+  border-radius: 6px;
+  text-align: center;
+}
+
+.news-detail-img-clickable {
+  cursor: pointer;
+}
+
+.news-detail-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.news-detail-gallery-item {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: transform var(--transition);
+}
+
+.news-detail-gallery-item:hover {
+  transform: scale(1.03);
+}
+
+.event-card-img-clickable {
+  cursor: pointer;
+}
+
+.event-card-extra-images {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 8px 0;
+}
+
+.event-card-thumb {
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform var(--transition);
+}
+
+.event-card-thumb:hover {
+  transform: scale(1.08);
+}
+
+.achievement-img-clickable {
+  cursor: pointer;
+}
+
+.achievement-extra-images {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.achievement-thumb {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform var(--transition);
+}
+
+.achievement-thumb:hover {
+  transform: scale(1.08);
+}
+
+/* ===================== MODAL CHI TIẾT 1 CHỨC VỤ (Cơ cấu tổ chức) ===================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-overlay[hidden] {
+  display: none;
+}
+
+.modal-box {
+  position: relative;
+  background-color: var(--color-bg);
+  border-radius: var(--radius);
+  padding: 40px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--color-bg-alt);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.modal-close:hover {
+  background-color: var(--color-border);
+}
+
+.modal-avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--color-primary);
+  margin: 0 auto 16px;
+}
+
+.modal-position {
+  display: block;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 6px;
+}
+
+.modal-name {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+
+.modal-bio {
+  color: var(--color-text);
+  line-height: 1.7;
+  white-space: pre-wrap;
+  text-align: left;
+}
+
+/* ===================== BLOCK EDITOR (Admin — chữ/ảnh xen kẽ) ===================== */
+.block-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 6px 0;
+}
+
+.block-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: var(--color-bg-alt);
+}
+
+.block-type-label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  width: 70px;
+}
+
+.block-text-input {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.block-image-preview {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.block-controls {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.block-controls button {
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+
+.block-controls button:hover {
+  background-color: var(--color-border);
+}
+
+.block-add-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.block-add-buttons .btn {
+  margin-top: 0;
+  padding: 6px 14px;
+  border: 1px solid var(--color-primary);
+  background-color: transparent;
+  color: var(--color-primary);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.block-add-buttons .btn:hover {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+/* ===================== HIỂN THỊ KHỐI (trang công khai — chi tiết tin tức) ===================== */
+.news-block-text {
+  margin-bottom: 16px;
+}
+
+.news-block-img {
+  display: block;
+  max-width: 100%;
+  max-height: 640px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius);
+  margin: 0 auto 16px;
+  cursor: pointer;
+  transition: transform var(--transition);
+}
+
+.news-block-img:hover {
+  transform: scale(1.01);
+}
+
+/* ===================== FOOTER ===================== */
+.site-footer {
+  background-color: var(--color-bg-alt);
+  padding: 24px 0;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.footer-nav {
+  display: flex;
+  gap: 16px;
+}
+
+/* ===================== BACK TO TOP ===================== */
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--color-primary);
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: opacity var(--transition);
+  z-index: 200;
+}
+
+.back-to-top.visible {
+  display: flex;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 860px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .header-inner {
+    padding-left: 6px;
+  }
+
+  .main-nav {
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px 20px;
+    display: none;
+    gap: 16px;
+  }
+
+  .main-nav.open {
+    display: flex;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .search-form {
+    width: 100%;
+  }
+
+  .search-form input {
+    width: 100%;
+  }
+
+  .banner {
+    padding: 56px 0;
+  }
+
+  .banner h1 {
+    font-size: 1.6rem;
+  }
+}
+
+/* ===================== ADMIN — NỘI DUNG BÀI VIẾT THEO KHỐI (chữ/ảnh, sắp xếp được) ===================== */
+.content-blocks-editor {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 12px;
+  background-color: var(--color-bg-alt);
+}
+
+.content-blocks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.content-blocks-empty {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.content-block-item {
+  display: grid;
+  grid-template-columns: 34px 1fr 34px;
+  gap: 10px;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 10px;
+}
+
+.content-block-order-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.content-block-order-controls button {
+  width: 26px;
+  height: 22px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 0.7rem;
+  line-height: 1;
+}
+
+.content-block-order-controls button:hover:not(:disabled) {
+  background-color: var(--color-bg-alt);
+}
+
+.content-block-order-controls button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.content-block-order-num {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+}
+
+.content-block-body {
+  min-width: 0;
+}
+
+.content-block-text-input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  resize: vertical;
+}
+
+.content-block-image-preview {
+  max-width: 100%;
+  max-height: 140px;
+  border-radius: 6px;
+  display: block;
+}
+
+.btn-block-remove {
+  border: none;
+  background-color: #fdecea;
+  color: #b3261e;
+  border-radius: 6px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  justify-self: center;
+}
+
+.btn-block-remove:hover {
+  background-color: #fadbd8;
+}
+
+.content-blocks-toolbar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.content-blocks-toolbar .btn {
+  font-size: 0.8rem;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.content-blocks-toolbar .btn-add-text-block,
+.content-blocks-toolbar .btn-add-image-block-label {
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+}
+
+.content-blocks-toolbar .btn-add-text-block:hover,
+.content-blocks-toolbar .btn-add-image-block-label:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+.btn-add-image-block-label {
+  display: inline-flex;
+  align-items: center;
+}
+
+@media (max-width: 480px) {
+  .content-block-item {
+    grid-template-columns: 30px 1fr 30px;
+  }
+}
+
+/* ===================== TRANG CHI TIẾT — NỘI DUNG THEO KHỐI ===================== */
+.news-detail-block-image {
+  width: 100%;
+  height: auto;
+  max-height: 640px;
+  object-fit: contain;
+  background-color: var(--color-bg-alt);
+  border-radius: var(--radius);
+  margin: 20px auto;
+  display: block;
+}
+
+/* ===================== BỘ CHỌN ẢNH DÙNG CHUNG (sắp xếp thứ tự + cắt/căn chỉnh) ===================== */
+.image-picker-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.image-picker-modal {
+  background-color: #fff;
+  border-radius: var(--radius);
+  width: 100%;
+  max-width: 640px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.image-picker-header {
+  padding: 16px 20px 8px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.image-picker-title {
+  margin: 0 0 4px;
+  font-size: 1.05rem;
+}
+
+.image-picker-hint {
+  margin: 0 0 12px;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.image-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+  padding: 16px 20px;
+  overflow-y: auto;
+}
+
+.image-picker-item {
+  position: relative;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: grab;
+  background-color: var(--color-bg-alt);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.image-picker-item.is-dragging {
+  opacity: 0.4;
+  transform: scale(0.97);
+}
+
+.image-picker-thumb {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.image-picker-order-badge {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  background-color: var(--color-primary);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.image-picker-item-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+  padding: 6px;
+  background-color: #fff;
+}
+
+.image-picker-btn-crop {
+  flex: 1;
+  border: 1px solid var(--color-border);
+  background-color: #fff;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  padding: 5px 4px;
+  cursor: pointer;
+}
+
+.image-picker-btn-crop:hover {
+  background-color: var(--color-bg-alt);
+}
+
+.image-picker-btn-remove {
+  border: none;
+  background-color: #fdecea;
+  color: #b3261e;
+  border-radius: 6px;
+  width: 26px;
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+
+.image-picker-btn-remove:hover {
+  background-color: #fadbd8;
+}
+
+.image-picker-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 14px 20px;
+  border-top: 1px solid var(--color-border);
+}
+
+.image-picker-crop-canvas-wrap {
+  padding: 16px 20px 0;
+  max-height: 55vh;
+  overflow: hidden;
+}
+
+.image-picker-crop-img {
+  display: block;
+  max-width: 100%;
+}
+
+.image-picker-crop-controls {
+  padding: 12px 20px 0;
+}
+
+.image-picker-zoom-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+}
+
+.image-picker-zoom {
+  flex: 1;
+}
+
+@media (max-width: 480px) {
+  .image-picker-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+}
+
+/* ===================== ADMIN — QUẢN LÝ CẤP BẬC (org_levels) ===================== */
+.admin-level-add-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.admin-level-add-form input[type="text"] {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+.admin-levels-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-level-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.admin-level-order-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.admin-level-order-controls button {
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+
+.admin-level-order-controls button:hover:not(:disabled) {
+  background-color: var(--color-bg-alt);
+}
+
+.admin-level-order-controls button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.admin-level-row .input-level-name {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+.admin-level-row .input-level-size {
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-family: inherit;
+  background-color: #fff;
+  font-size: 0.85rem;
+}
+
+.admin-level-size-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+  background-color: var(--color-bg-alt);
+  color: var(--color-text-muted);
+}
+
+.admin-level-size-badge--tier-1 {
+  background-color: #fff6da;
+  color: #8a6d00;
+}
+
+.admin-level-size-badge--tier-2 {
+  background-color: #eef1ff;
+  color: #3949ab;
+}
+
+.admin-level-row .btn {
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 0.8rem;
+  padding: 8px 12px;
+}
+
+/* ===================== ADMIN — DANH SÁCH CHỨC VỤ GOM NHÓM THEO CẤP BẬC ===================== */
+.admin-level-group {
+  margin-bottom: 24px;
+}
+
+.admin-level-group-title {
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 8px 12px;
+  background-color: var(--color-bg-alt);
+  border-radius: var(--radius);
+  margin: 0 0 12px;
+}
+
+.admin-level-group-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ===================== GIÁO VIÊN CỐ VẤN — THẺ NGANG MỚI (theo bản vẽ tay) ===================== */
+.advisors-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.advisor-card {
+  display: flex;
+  align-items: stretch;
+  gap: 24px;
+  cursor: pointer;
+  transition: transform var(--transition);
+}
+
+.advisor-card:hover {
+  transform: translateY(-2px);
+}
+
+.advisor-card-photo-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 160px;
+}
+
+.advisor-card-img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--color-primary);
+  background-color: var(--color-bg-alt);
+  margin-bottom: 10px;
+}
+
+.advisor-card-name-box {
+  width: 100%;
+  text-align: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 8px 10px;
+  background-color: var(--color-bg-alt);
+}
+
+.advisor-card-title {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: var(--color-text-muted);
+  margin-bottom: 2px;
+}
+
+.advisor-card-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.advisor-card-intro-box {
+  flex: 1;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  background-color: var(--color-bg);
+  display: flex;
+  align-items: center;
+}
+
+.advisor-card-bio {
+  color: var(--color-text);
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 640px) {
+  .advisor-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .advisor-card-intro-box {
+    width: 100%;
+  }
+}
+
+.leadership-admin-group {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.leadership-admin-group-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 16px;
+  background-color: var(--color-bg-alt);
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+}
+
+.leadership-admin-group-header:hover {
+  background-color: var(--color-border);
+}
+
+.leadership-admin-group-title {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.leadership-admin-group-count {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  background-color: var(--color-bg);
+  padding: 2px 10px;
+  border-radius: 999px;
+}
+
+.leadership-admin-group-arrow {
+  margin-left: auto;
+  transition: transform var(--transition);
+}
+
+.leadership-admin-group-header.is-open .leadership-admin-group-arrow {
+  transform: rotate(90deg);
+}
+
+.leadership-admin-group-body {
+  padding: 16px;
+}
+
+/* ===================== CẤP BẬC TRONG 1 NHIỆM KỲ (trang công khai) ===================== */
+.leadership-level-group {
+  margin-bottom: 32px;
+}
+
+.leadership-level-group:last-child {
+  margin-bottom: 0;
+}
+
+.leadership-level-title {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  margin-bottom: 16px;
+}
+
+.main-nav .search-form {
+  order: 2;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+.main-nav .nav-list {
+  order: 1;
+}
+
+@media (min-width: 861px) {
+  .header-inner {
+    flex-wrap: wrap;
+  }
+
+  .main-nav {
+    display: contents;
+  }
+
+  .main-nav .nav-list {
+    order: 1;
+  }
+
+  .header-inner::after {
+    content: "";
+    order: 2;
+    flex-basis: 100%;
+    height: 0;
+  }
+
+  .main-nav .search-form {
+    order: 3;
+    flex-basis: auto;
+    margin-left: auto;
+    margin-top: 10px;
+  }
+}
+
+@media (min-width: 861px) {
+  .nav-list {
+    display: contents;
+  }
+
+  .nav-list li:not(.auth-control) {
+    order: 1;
+  }
+
+  .header-inner::before {
+    content: "";
+    order: 2;
+    flex-basis: 100%;
+    height: 0;
+  }
+
+  .nav-list .auth-control {
+    order: 3;
+    margin-left: auto;
+    margin-top: 2px;
+  }
+
+  .header-inner::after {
+    content: "";
+    order: 4;
+    flex-basis: 100%;
+    height: 0;
+  }
+
+  .main-nav .search-form {
+    order: 5;
+    flex-basis: auto;
+    margin-left: auto;
+    margin-top: 10px;
+  }
+}
+
+@media (min-width: 861px) {
+  .header-inner {
+    justify-content: flex-start;
+    column-gap: 22px;
+  }
+
+  .nav-list .auth-control {
+    margin-left: auto;
+  }
+
+  .main-nav .search-form {
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 861px) {
+  .main-nav .search-form {
+    order: 1;
+    margin-left: auto;
+    margin-top: 0;
+  }
+
+  .header-inner::after {
+    display: none;
+  }
+}
+
+@media (min-width: 861px) {
+  .nav-list li:first-child {
+    margin-left: 30px;
+  }
+}
+
+.logo-img {
+  width: 72px;
+  height: 72px;
+}
+
+.site-name {
+  font-size: 1.7rem;
+}
+
+.slogan {
+  font-size: 1.05rem;
+}
+
+.gallery-admin-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 20px;
+  padding: 10px 14px;
+  background-color: var(--color-bg-alt);
+  border-radius: var(--radius);
+}
+
+.gallery-select-all-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.gallery-select-all-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.gallery-admin-item {
+  position: relative;
+}
+
+.gallery-admin-checkbox-wrap {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 4px;
+  padding: 2px;
+  line-height: 0;
+}
+
+.gallery-item-checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+@media (min-width: 861px) {
+  .header-inner::before {
+    display: none;
+  }
+}
+
+.news-search-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 860px) {
+  .news-search-row {
+    justify-content: stretch;
+  }
+}
+
+@media (min-width: 861px) {
+  .header-inner::before,
+  .header-inner::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .nav-list .auth-control {
+    order: 1 !important;
+    margin-left: auto !important;
+    margin-top: 0 !important;
+  }
+}
+
+@media (min-width: 861px) {
+  .header-inner {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    min-height: 76px;
+  }
+}
+
+@media (min-width: 861px) {
+  .header-inner {
+    flex-wrap: nowrap !important;
+    column-gap: 14px;
+  }
+
+  .nav-list li:first-child {
+    margin-left: 14px;
+  }
+
+  .user-menu {
+    gap: 8px;
+  }
+
+  .admin-panel-link,
+  .logout-btn {
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 861px) {
+  .nav-list li:first-child {
+    margin-left: auto !important;
+  }
+}
+
+.advisors-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.advisor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+  width: 260px;
+  padding: 20px 18px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  background-color: var(--color-bg);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.advisor-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.advisor-card-photo-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.advisor-card-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-border);
+  background-color: var(--color-bg-alt);
+  margin-bottom: 8px;
+}
+
+.advisor-card-name-box {
+  width: 100%;
+  text-align: center;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+}
+
+.advisor-card-title {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+}
+
+.advisor-card-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.advisor-card-intro-box {
+  width: 100%;
+  border: none;
+  padding: 0;
+  margin-top: 10px;
+  background-color: transparent;
+  display: block;
+}
+
+.advisor-card-bio {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .advisor-card {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+.advisors-list {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  width: 100%;
+}
+
+#advisorsGrid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  width: 100%;
+}
+
+.org-tree-chart {
+  overflow-x: auto;
+  padding: 40px 36px 20px;
+}
+
+.org-tree-root-row {
+  display: flex;
+  justify-content: center;
+}
+
+.org-tree-root-box {
+  display: inline-block;
+  border: none;
+  border-radius: 10px;
+  padding: 18px 48px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  color: #fff;
+  text-align: center;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark, var(--color-primary)));
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.org-tree-root-box:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+}
+
+.org-tree-branches-row {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  margin-top: 0;
+  padding-top: 30px;
+}
+
+.org-tree-branches-row::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 3px;
+  height: 34px;
+  background-color: var(--color-primary);
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.org-tree-branch {
+  position: relative;
+  padding: 26px 30px 0;
+}
+
+.org-tree-branch::before,
+.org-tree-branch::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 50%;
+  width: 50%;
+  height: 26px;
+  border-top: 3px solid var(--color-primary);
+}
+
+.org-tree-branch::after {
+  right: auto;
+  left: 50%;
+  border-left: 3px solid var(--color-primary);
+}
+
+.org-tree-branch:first-child::before {
+  border-top: none;
+}
+
+.org-tree-branch:last-child::after {
+  border-top: none;
+}
+
+.org-tree-branch:only-child::before,
+.org-tree-branch:only-child::after {
+  display: none;
+}
+
+.org-tree-branch-label {
+  display: inline-block;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--color-primary);
+  background-color: var(--color-bg);
+  border: 2px solid var(--color-primary);
+  border-radius: 999px;
+  padding: 8px 20px;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform var(--transition), box-shadow var(--transition), background-color var(--transition);
+}
+
+.org-tree-branch-label:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-bg-alt);
+}
+
+.org-tree-branch > .org-tree-branch-label {
+  display: table;
+  margin: 0 auto;
+}
+
+.org-tree-arrow-down {
+  position: relative;
+  display: block;
+  height: 22px;
+  margin: 0 0 4px;
+}
+
+.org-tree-arrow-down::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 3px;
+  height: 14px;
+  background-color: var(--color-primary);
+  transform: translateX(-50%);
+}
+
+.org-tree-arrow-down::after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid var(--color-primary);
+  transform: translateX(-50%);
+}
+
+.org-tree-stack-box {
+  border: 2px solid var(--color-primary);
+  border-radius: 12px;
+  overflow: hidden;
+  min-width: 240px;
+  background-color: var(--color-bg);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.org-tree-stack-item {
+  padding: 14px 20px;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.org-tree-stack-item:last-child {
+  border-bottom: none;
+}
+
+.org-tree-stack-item:hover {
+  background-color: var(--color-bg-alt);
+}
+
+.org-tree-stack-item-title {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.org-tree-stack-item-name {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+@media (max-width: 600px) {
+  .org-tree-root-box {
+    padding: 14px 30px;
+    font-size: 0.95rem;
+  }
+
+  .org-tree-branch {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .org-tree-branch-label {
+    font-size: 0.85rem;
+    padding: 6px 14px;
+  }
+
+  .org-tree-stack-box {
+    min-width: 170px;
+  }
+
+  .org-tree-stack-item {
+    padding: 12px 14px;
+  }
+}
+
+.modal-box--org-leaders {
+  max-width: 680px;
+  text-align: left;
+}
+
+.modal-position-title {
+  text-align: center;
+  color: var(--color-primary);
+  font-size: 1.3rem;
+  margin: 24px 0 20px;
+}
+
+.org-leaders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.org-leaders-list .advisor-card {
+  cursor: default;
+}
+
+.org-leaders-list .advisor-card:hover {
+  transform: none;
+}
+
+.admin-position-row-wrapper {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+.admin-position-row-wrapper .admin-position-row {
+  border: none;
+  padding: 0;
+}
+
+.admin-position-leaders-section {
+  margin-top: 12px;
+  border-top: 1px dashed var(--color-border);
+  padding-top: 12px;
+}
+
+.btn-toggle-leaders {
+  border: 1px solid var(--color-primary);
+  background: none;
+  color: var(--color-primary);
+  border-radius: var(--radius);
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn-toggle-leaders:hover {
+  background-color: var(--color-bg-alt);
+}
+
+.leaders-panel {
+  margin-top: 12px;
+  padding: 14px;
+  background-color: var(--color-bg-alt);
+  border-radius: var(--radius);
+}
+
+.leaders-panel .leader-row {
+  background-color: #fff;
+  margin-bottom: 12px;
+}
+
+.leaders-panel .add-leader-form {
+  max-width: 100%;
+}
+
+#advisorsGrid {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.advisor-card-intro-box {
+  display: none !important;
+}
+
+.modal-bio {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+@media (min-width: 601px) {
+  .org-tree-chart {
+    padding: 56px 20px 30px;
+  }
+
+  .org-tree-root-box {
+    padding: 26px 64px;
+    font-size: 1.35rem;
+    border-radius: 14px;
+  }
+
+  .org-tree-branches-row {
+    padding-top: 44px;
+  }
+
+  .org-tree-branches-row::before {
+    height: 48px;
+  }
+
+  .org-tree-branch {
+    padding: 38px 46px 0;
+  }
+
+  .org-tree-branch::before,
+  .org-tree-branch::after {
+    height: 38px;
+    border-width: 3px;
+  }
+
+  .org-tree-branch-label {
+    font-size: 1.15rem;
+    padding: 12px 30px;
+    border-width: 3px;
+  }
+
+  .org-tree-arrow-down {
+    height: 30px;
+  }
+
+  .org-tree-arrow-down::before {
+    height: 20px;
+    width: 4px;
+  }
+
+  .org-tree-arrow-down::after {
+    top: 18px;
+    border-left-width: 8px;
+    border-right-width: 8px;
+    border-top-width: 10px;
+  }
+
+  .org-tree-stack-box {
+    min-width: 320px;
+    border-width: 3px;
+    border-radius: 16px;
+  }
+
+  .org-tree-stack-item {
+    padding: 20px 28px;
+  }
+
+  .org-tree-stack-item-title {
+    font-size: 1.1rem;
+  }
+
+  .org-tree-stack-item-name {
+    font-size: 0.95rem;
+  }
+}
+
+.org-tree-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.org-tree-root-row,
+.org-tree-branches-row {
+  width: 100%;
+}
+
+.org-tree-root-box {
+  position: relative;
+}
+
+.org-tree-root-row:has(+ .org-tree-branches-row) .org-tree-root-box::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 3px;
+  height: 30px;
+  background-color: var(--color-primary);
+  transform: translateX(-50%);
+}
+
+@media (min-width: 601px) {
+  .org-tree-root-row:has(+ .org-tree-branches-row) .org-tree-root-box::after {
+    height: 44px;
+  }
+}
+
+.org-tree-branches-row::before {
+  content: none;
+}
+
+.org-tree-root-box {
+  transform: translateX(0);
+}
+
+@media (max-width: 600px) {
+  .org-tree-root-box {
+    transform: none;
+  }
+}
+
+.search-form {
+  border-radius: 999px;
+  border-color: var(--color-border);
+  background-color: var(--color-bg);
+  transition: box-shadow var(--transition), border-color var(--transition);
+}
+
+.search-form:focus-within {
+  border-color: transparent;
+  box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+}
+
+.search-form input {
+  border: none;
+  background: transparent;
+  border-radius: 999px 0 0 999px;
+  padding: 8px 6px 8px 16px;
+}
+
+.search-form button {
+  background: transparent;
+  border-radius: 0 999px 999px 0;
+  padding: 8px 14px 8px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  transition: color var(--transition);
+}
+
+.search-form button:hover {
+  color: var(--color-primary);
+}
+
+.search-icon {
+  display: block;
+}
+
+.search-form input {
+  width: 210px;
+  min-width: 210px;
+}
+
+.search-form input {
+  color: var(--color-text);
+  caret-color: var(--color-text);
+}
+
+.search-form input {
+  width: 280px;
+  min-width: 280px;
+}
+
+.search-form {
+  flex-shrink: 0;
+}
+
+.search-form input {
+  text-align: left !important;
+  direction: ltr !important;
+  flex-shrink: 0;
+}
+
+.search-form input::placeholder {
+  color: var(--color-text-muted);
+  opacity: 1;
+}
+
+.search-form input {
+  width: 170px !important;
+  min-width: 170px !important;
+}
+
+.search-form input {
+  width: 100px !important;
+  min-width: 100px !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* =======================================================
+   KHỐI CSS NÀY THAY THẾ HOÀN TOÀN các khối ".org-leader-*"
+   đã dán ở 2 lần sửa trước (v2, v3) — XÓA các khối đó đi rồi
+   dán khối NÀY vào cuối style.css, tránh nhiều khối chồng lên
+   nhau gây rối.
+
+   KHUNG CHÍNH (khi bấm vào 1 mục, VD "Đội Chỉ Huy"):
+   bố cục 2 cột — TRÁI là danh sách thẻ nhỏ chỉ huy (bấm để mở
+   chi tiết riêng), PHẢI là khung giới thiệu CHUNG của mục.
+   ======================================================= */
+
+.modal-box--org-leaders {
+  max-width: 760px;
+  text-align: left;
+}
+
+.org-detail-layout {
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+  margin-top: 8px;
+}
+
+.org-detail-layout .org-leaders-list {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 420px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.org-detail-description-col {
+  flex: 1;
+  min-width: 0;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  background-color: var(--color-bg);
+}
+
+.org-position-description {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  text-align: left;
+  margin: 0;
+}
+
+.org-leader-mini-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  background-color: var(--color-bg);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.org-leader-mini-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.org-leader-mini-photo {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-primary);
+  background-color: var(--color-bg-alt);
+  flex-shrink: 0;
+}
+
+.org-leader-mini-info {
+  min-width: 0;
+}
+
+.org-leader-mini-title {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: var(--color-text-muted);
+  margin-bottom: 2px;
+}
+
+.org-leader-mini-name {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+@media (max-width: 640px) {
+  .org-detail-layout {
+    flex-direction: column;
+  }
+
+  .org-detail-layout .org-leaders-list {
+    max-height: none;
+  }
+}
+
+#orgLeaderDetailModal {
+  z-index: 1100;
+}
+
+.org-position-description {
+  overflow-wrap: break-word;
+  word-break: break-word;
+} 
+
+.org-leader-mini-card {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  width: 240px;
+  padding: 28px 20px;
+  min-height: 0;
+}
+
+.org-detail-layout .org-leaders-list {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  gap: 16px;
+  max-height: none;
+  overflow-y: visible;
+}
+
+.org-leader-mini-photo {
+  width: 120px;
+  height: 120px;
+}
+
+.org-leader-mini-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.org-leader-mini-title {
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+.org-leader-mini-name {
+  font-size: 1.3rem;
+}
+
+.org-detail-description-col {
+  border: none !important;
+  padding: 0 !important;
+  background-color: transparent !important;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background-color: #2196F3;
+  border-color: #2196F3;
+  color: #fff;
+}
+
+.login-link {
+  background-color: #2196F3;
+}
+
+.login-link:hover {
+  background-color: #1976D2;
+}
+
+/* =======================================================================
+   ============  BẢN REDESIGN GIAO DIỆN 2026 — CHỈ THÊM MỚI  =============
+   =======================================================================
+   Toàn bộ khối CSS bên dưới đây là MỚI, được THÊM VÀO CUỐI file theo
+   đúng quy ước làm việc: KHÔNG xóa/sửa bất kỳ rule nào ở phía trên.
+   Nhờ cơ chế "cascade" của CSS (rule nằm SAU trong file được ưu tiên
+   hơn rule nằm TRƯỚC nếu cùng độ ưu tiên/selector), các rule dưới đây
+   sẽ tự động "đè" lên style cũ của cùng 1 class để đổi giao diện,
+   trong khi cấu trúc HTML/JS phía trên hoàn toàn không đổi.
+
+   Áp dụng cho: Header (kính mờ + pill-nav), thanh chạy chữ (marquee,
+   chạy CHẬM ~55s/vòng theo yêu cầu), khung banner (viền trắng + đổ
+   bóng + zoom nhẹ), khối "Thông báo nổi bật" (chấm đỏ nhấp nháy kiểu
+   live), 3 nút "Liên kết nhanh" (đổi màu gradient riêng từng nút),
+   thẻ tin tức (bo góc lớn hơn, overlay ảnh, hover nâng thẻ lên), khu
+   vực đăng nhập/đăng xuất (nút bo tròn dạng pill), và Footer (nền tối
+   + ánh sáng glow phía sau).
+
+   LƯU Ý CHO CÁC TRANG KHÁC (gioi-thieu.html, tin-tuc.html, su-kien.html,
+   thu-vien.html, lien-he.html, chi-huy-qua-cac-nhiem-ky.html,
+   co-cau-to-chuc.html...): vì các trang này DÙNG CHUNG 1 file
+   style.css này, nên Header + Footer của TẤT CẢ các trang đó sẽ tự
+   động đổi theo giao diện mới ngay khi bạn thay file style.css này —
+   KHÔNG cần sửa gì thêm trong các file .html khác, miễn là các trang
+   đó có cùng cấu trúc <header class="site-header">...</header> và
+   <footer class="site-footer">...</footer> như index.html hiện tại.
+   ======================================================================= */
+
+/* --------- HEADER: hiệu ứng kính mờ (glassmorphism) --------- */
+.site-header {
+  background-color: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border-bottom: 1px solid rgba(33, 150, 243, 0.12);
+  box-shadow: 0 4px 24px rgba(15, 55, 110, 0.08);
+}
+
+/* Logo: nâng nhẹ + đổ bóng mềm khi hover, tạo cảm giác "sống động" */
+.logo-link {
+  transition: transform var(--transition);
+}
+
+.logo-link:hover {
+  transform: translateY(-1px);
+}
+
+.logo-img {
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
+}
+
+/* Menu điều hướng: chuyển từ "gạch chân khi active" sang "viên
+   thuốc (pill) nền xanh nhạt khi hover/active" — hiện đại hơn,
+   không đổi cấu trúc <ul><li><a> nên main.js không bị ảnh hưởng */
+.nav-list a {
+  border-bottom: none;
+  border-radius: 999px;
+  padding: 8px 14px;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.nav-list a:hover,
+.nav-list a.active {
+  background-color: rgba(33, 150, 243, 0.1);
+  color: #1976d2;
+  border-bottom-color: transparent;
+}
+
+/* Nút "Đăng nhập" và cụm "Trang quản trị / Đăng xuất": bo tròn hẳn
+   thành pill, thêm đổ bóng màu xanh nhẹ, nâng lên khi hover */
+.login-link {
+  border-radius: 999px;
+  background: linear-gradient(135deg, #2196f3, #1565c0);
+  box-shadow: 0 4px 14px rgba(33, 150, 243, 0.35);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.login-link:hover {
+  background: linear-gradient(135deg, #2196f3, #1565c0);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(33, 150, 243, 0.45);
+}
+
+.admin-panel-link {
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ffca28, #f2b705);
+  box-shadow: 0 3px 10px rgba(242, 183, 5, 0.35);
+}
+
+.logout-btn {
+  border-radius: 999px;
+}
+
+/* --------- THANH CHẠY CHỮ (marquee) — MỚI, chạy CHẬM --------- */
+.ticker-tape {
+  overflow: hidden;
+  background: linear-gradient(90deg, #0d3b73, #1565c0 50%, #0d3b73);
+  padding: 8px 0;
+  white-space: nowrap;
+}
+
+.ticker-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 40px;
+  /* 55 giây / vòng: đủ chậm để không gây rối mắt, theo đúng yêu cầu
+     "chạy chậm lại" (bản đầu là ~25s, giờ tăng lên hơn gấp đôi) */
+  animation: ticker-scroll 55s linear infinite;
+  padding-left: 40px;
+}
+
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+.ticker-star {
+  color: #ffd54f;
+}
+
+@keyframes ticker-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* Vì nội dung đã LẶP LẠI 2 lần y hệt trong HTML, chạy hết -50%
+       chiều rộng sẽ tạo cảm giác lặp vô tận LIỀN MẠCH, không giật */
+    transform: translateX(-50%);
+  }
+}
+
+/* Tôn trọng người dùng đã bật "giảm chuyển động" trong hệ điều hành —
+   khả năng tiếp cận (accessibility) tốt, dừng hẳn animation cho họ */
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    animation: none;
+  }
+}
+
+/* --------- BANNER: khung viền trắng + đổ bóng + zoom nhẹ --------- */
+.banner {
+  padding: 28px 0 20px;
+  background: linear-gradient(180deg, #eaf4ff 0%, #ffffff 100%);
+}
+
+.banner-img {
+  max-width: 1400px;
+  margin: 0 auto;
+  border-radius: 18px;
+  border: 6px solid #ffffff;
+  box-shadow: 0 12px 40px rgba(13, 71, 161, 0.22);
+  transition: transform 0.4s ease;
+}
+
+.banner:hover .banner-img {
+  transform: scale(1.008);
+}
+
+@media (max-width: 860px) {
+  /* Ghi đè lại rule cũ ở khối RESPONSIVE phía trên (banner {padding:
+     56px 0}) — rule này nằm SAU trong file nên được ưu tiên áp dụng,
+     tránh khoảng trắng thừa phía trên/dưới ảnh banner trên điện thoại */
+  .banner {
+    padding: 16px 0 12px;
+  }
+
+  .banner-img {
+    border-width: 4px;
+    border-radius: 12px;
+  }
+}
+
+/* --------- THÔNG BÁO NỔI BẬT: chấm đỏ nhấp nháy kiểu "live" --------- */
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.live-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #e53935;
+  box-shadow: 0 0 0 rgba(229, 57, 53, 0.5);
+  animation: live-dot-pulse 1.8s ease-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes live-dot-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(229, 57, 53, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(229, 57, 53, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(229, 57, 53, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-dot {
+    animation: none;
+  }
+}
+
+.announcement-item {
+  border-left-width: 5px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+/* --------- 3 THẺ "LIÊN KẾT NHANH": mỗi thẻ 1 màu gradient riêng,
+   chỉ dùng nth-child nên KHÔNG cần sửa HTML --------- */
+.quick-link-item {
+  border-radius: 12px;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.quick-links .quick-link-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+}
+
+.quick-links .quick-link-item:nth-child(1) {
+  background: linear-gradient(135deg, #1877f2, #0d47a1);
+}
+
+.quick-links .quick-link-item:nth-child(2) {
+  background: linear-gradient(135deg, #2196f3, #1565c0);
+}
+
+.quick-links .quick-link-item:nth-child(3) {
+  background: linear-gradient(135deg, #f2b705, #e08e00);
+  color: #1a1a1a;
+}
+
+/* --------- THẺ TIN TỨC: bo góc lớn hơn, overlay gradient trên ảnh,
+   hover nâng thẻ + phóng ảnh nhẹ --------- */
+.news-card {
+  border-radius: 16px;
+  border-color: rgba(0, 0, 0, 0.06);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(13, 71, 161, 0.14);
+}
+
+.news-card-img-wrap {
+  position: relative;
+  overflow: hidden;
+  height: 190px;
+}
+
+.news-card-img-wrap img {
+  transition: transform 0.4s ease;
+}
+
+.news-card:hover .news-card-img-wrap img {
+  transform: scale(1.06);
+}
+
+.news-card-category {
+  display: inline-block;
+  align-self: flex-start;
+  background-color: rgba(33, 150, 243, 0.12);
+  color: #1565c0;
+  padding: 3px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.03em;
+}
+
+.filter-btn {
+  border-radius: 999px;
+}
+
+/* --------- FOOTER: nền tối + ánh sáng glow phía sau --------- */
+.site-footer {
+  position: relative;
+  background-color: #0d1b2a;
+  color: rgba(255, 255, 255, 0.75);
+  padding: 32px 0;
+  overflow: hidden;
+}
+
+.site-footer::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  width: 500px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(33, 150, 243, 0.35), transparent 70%);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.footer-inner {
+  position: relative;
+  z-index: 1;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.footer-nav a {
+  color: rgba(255, 255, 255, 0.8);
+  transition: color var(--transition);
+}
+
+.footer-nav a:hover {
+  color: #64b5f6;
+}
+
+.admin-footer-link {
+  opacity: 0.4;
+}
+
+/* --------- NÚT "QUAY VỀ ĐẦU TRANG": đồng bộ màu xanh mới --------- */
+.back-to-top {
+  background: linear-gradient(135deg, #2196f3, #1565c0);
+  box-shadow: 0 4px 14px rgba(33, 150, 243, 0.4);
+}
+
+/* =======================================================================
+   MENU CON (dropdown) CHO MỤC "GIỚI THIỆU"
+   Chỉ dùng position:absolute + hiện/ẩn qua :hover, KHÔNG cần JavaScript
+   nên không ảnh hưởng gì tới main.js. Mục cha ".nav-item-dropdown" cần
+   position:relative để mục con định vị đúng ngay bên dưới nó.
+   ======================================================================= */
+.nav-item-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Mũi tên nhỏ cạnh chữ "Giới thiệu" — tự xoay ngược lại khi mục cha
+   đang được hover, báo hiệu trực quan là menu con đang MỞ */
+.nav-dropdown-arrow {
+  transition: transform var(--transition);
+}
+
+.nav-item-dropdown:hover .nav-dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* Khung chứa 2 mục con — ẩn mặc định (opacity/visibility thay vì
+   display:none để có hiệu ứng mờ dần mượt mà khi xuất hiện) */
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 6px;
+  min-width: 210px;
+  list-style: none;
+  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(13, 71, 161, 0.16);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
+  z-index: 150;
+}
+
+/* QUAN TRỌNG: trình duyệt mặc định tự thêm margin/padding cho thẻ
+   <li> (dành chỗ cho dấu chấm đầu dòng), dù <ul> cha đã có
+   "list-style: none". Reset TƯỜNG MINH về 0 ở đây để 2 mục con
+   ("Cơ cấu tổ chức" / "Các đời chỉ huy") LUÔN thẳng hàng mép trái
+   với nhau, không phụ thuộc vào kiểu mặc định của từng trình duyệt. */
+.nav-dropdown-menu li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Rê chuột vào CẢ mục cha LẪN chính khung menu con đều giữ cho nó
+   hiện (tránh bị ẩn mất khi di chuột từ chữ "Giới thiệu" xuống 2
+   mục con bên dưới, vì giữa 2 phần có 1 khoảng hở nhỏ margin-top) */
+.nav-item-dropdown:hover .nav-dropdown-menu,
+.nav-item-dropdown:focus-within .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-dropdown-menu a {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 14px;
+  border-radius: 8px;
+  color: var(--color-text);
+  font-weight: 500;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.nav-dropdown-menu a:hover {
+  background-color: rgba(33, 150, 243, 0.1);
+  color: #1976d2;
+}
+
+/* Điện thoại/màn hình hẹp: KHÔNG có hover, nên hiện 2 mục con LUÔN
+   LUÔN dạng thụt lề ngay dưới "Giới thiệu" trong menu xổ dọc, thay
+   vì phụ thuộc vào hover (người dùng cảm ứng sẽ không bao giờ kích
+   hoạt được :hover) — đảm bảo vẫn bấm truy cập được bình thường */
+@media (max-width: 860px) {
+  .nav-dropdown-arrow {
+    display: none;
+  }
+
+  .nav-dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    padding-left: 14px;
+    margin-top: 0;
+    background: transparent;
+  }
+
+  .nav-dropdown-menu a {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+  }
+}
+
+/* =======================================================================
+   FIX: CĂN THẲNG HÀNG 2 MỤC CON TRONG DROPDOWN "GIỚI THIỆU"
+   (Cơ cấu tổ chức / Các đời chỉ huy) — chỉ ghi đè phần căn lề, không
+   đụng tới hiệu ứng mờ dần/hover đã có sẵn ở khối phía trên.
+   ======================================================================= */
+.nav-dropdown-menu {
+  align-items: stretch; /* đảm bảo 2 <li> giãn full chiều ngang menu */
+}
+
+.nav-dropdown-menu li {
+  width: 100%;
+  text-indent: 0;      /* phòng trường hợp bị kế thừa text-indent lạ */
+  text-align: left;
+}
+
+.nav-dropdown-menu a {
+  text-indent: 0;
+  padding: 10px 14px;   /* ép lại padding giống nhau cho cả 2 link */
+  box-sizing: border-box;
+}
+
+/* =======================================================================
+   FIX: THANH CHẠY CHỮ (ticker) BỊ GIẬT/DỨT Ở ĐIỂM NỐI VÒNG LẶP
+   Nguyên nhân: "gap" của flexbox không tự thêm khoảng cách SAU phần tử
+   cuối cùng, cộng với "padding-left" khiến nửa đầu và nửa sau của track
+   không có chiều rộng bằng nhau tuyệt đối -> translateX(-50%) không rơi
+   đúng điểm nối -> bị giật. Cách sửa: bỏ gap/padding ở track, chuyển
+   khoảng cách sang margin-right cho TỪNG mục (kể cả mục cuối), để 2 nửa
+   luôn bằng nhau chính xác -> chạy liền mạch, không mất chữ.
+   Đồng thời giảm thời gian animation để chạy NHANH hơn một chút (55s -> 32s).
+   ======================================================================= */
+.ticker-track {
+  gap: 0;              /* bỏ gap cũ, thay bằng margin-right ở từng item */
+  padding-left: 0;     /* bỏ padding cũ, gộp vào margin-right cho đều */
+  animation-duration: 32s; /* tăng tốc: số càng nhỏ càng chạy nhanh */
+}
+
+.ticker-item {
+  margin-right: 40px;  /* khoảng cách giữa các mục, kể cả sau mục cuối */
+}
+
+/* =======================================================================
+   FIX BỔ SUNG: THANH CHẠY CHỮ VẪN BỊ "MẤT CHỮ" / CHỚP HÌNH KHI CHẠY
+   Nguyên nhân: trình duyệt không tự đẩy phần tử đang animate sang layer
+   GPU riêng, khiến nó phải vẽ lại (repaint) liên tục cùng lúc với hiệu
+   ứng kính mờ (backdrop-filter) của header phía trên -> gây chớp/mất chữ
+   trong lúc chạy. Cách sửa: ép trình duyệt xử lý bằng GPU riêng bằng
+   translateZ(0) + will-change, và khóa cứng chiều rộng từng chữ để
+   không bị co giãn (flex-shrink) làm lệch điểm nối vòng lặp.
+   ======================================================================= */
+.ticker-track {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.ticker-item {
+  flex-shrink: 0; /* không cho co lại, tránh sai lệch chiều rộng */
+}
+
+/* =======================================================================
+   FIX BỔ SUNG 2: đảm bảo track luôn rộng bằng đúng tổng nội dung, không
+   bị co lại theo container — tránh trường hợp trên màn hình rất rộng
+   (ví dụ máy tính bàn to) nội dung vẫn không đủ phủ hết chiều ngang.
+   ======================================================================= */
+.ticker-track {
+  width: max-content;
+}
+
+/* =======================================================================
+   REDESIGN: KHU "THÔNG BÁO NỔI BẬT" — layout 2 cột
+   Trái: thông báo (tự canh giữa theo chiều dọc, luôn đẹp dù có 1, 2
+   hay 3 thông báo). Phải: 3 liên kết nhanh xếp dọc thành sidebar.
+   Chiều cao 2 cột LUÔN BẰNG NHAU (dùng cơ chế "stretch" mặc định của
+   CSS grid — cột nào ít nội dung hơn sẽ tự giãn theo cột cao hơn),
+   nên không còn khoảng trắng thừa dù số lượng thông báo thay đổi.
+   Chỉ style phần bọc mới thêm, KHÔNG đụng gì tới #announcementsList
+   hay logic JS render thông báo bên trong nó.
+   ======================================================================= */
+.announcements-layout {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 28px;
+  /* KHÔNG đặt align-items: start — để mặc định "stretch", 2 cột sẽ
+     luôn cao bằng nhau, tự động khớp theo cột nào cao hơn */
+}
+
+.announcements-main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Danh sách thông báo tự canh GIỮA theo chiều dọc trong khung đã
+   được kéo giãn — nhìn cân đối dù chỉ có 1 thông báo hay nhiều hơn */
+.announcements-list {
+  flex: 1;
+  justify-content: center;
+}
+
+/* Icon lá cờ nhỏ trước badge "TUYỂN THÀNH VIÊN" — gợi hình ảnh cờ hiệu
+   "Xung kích" đã có trong banner, không cần sửa HTML/JS render badge */
+.announcement-item .badge::before {
+  content: "🚩";
+  margin-right: 4px;
+}
+
+.announcement-item {
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.announcement-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* Sidebar liên kết nhanh: xếp dọc, đều chiều rộng. justify-content:
+   space-between giúp 3 nút tự giãn cách đều để LẤP ĐẦY đúng chiều cao
+   đã được kéo giãn bằng cột trái (thay vì dồn cụm lên trên rồi thừa
+   khoảng trắng bên dưới) */
+.announcements-layout .quick-links {
+  display: flex;
+  flex-direction: column;
+  justify-content:  center;
+  gap: 12px;
+  width: 100%;
+}
+
+.announcements-layout .quick-link-item {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+@media (max-width: 800px) {
+  .announcements-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =======================================================================
+   BẢN SỬA: RESPONSIVE CHO KHU "THÔNG BÁO NỔI BẬT" (1–4 thông báo + mobile)
+   Chỉ thêm mới, không sửa/xóa rule nào ở trên. Nhờ cascade CSS, các rule
+   dưới đây sẽ đè lên style cũ của cùng class để tinh chỉnh layout.
+   ======================================================================= */
+
+/* --- Khi có TỪ 4 THÔNG BÁO TRỞ LÊN: tự giới hạn chiều cao + cuộn dọc,
+   tránh khối thông báo bị kéo dài quá mức khi dữ liệu nhiều lên --- */
+.announcements-list:has(> .announcement-item:nth-child(4)) {
+  max-height: 340px;
+  overflow-y: auto;
+  padding-right: 6px;
+  scrollbar-width: thin; /* Firefox: thanh cuộn mảnh, đỡ chiếm chỗ */
+}
+
+.announcements-list:has(> .announcement-item:nth-child(4)) .announcement-item {
+  padding: 12px 14px; /* thu gọn item lại một chút khi danh sách dài */
+}
+
+/* Thanh cuộn mảnh, màu nhẹ cho trình duyệt hỗ trợ webkit (Chrome/Safari) */
+.announcements-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.announcements-list::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 999px;
+}
+
+/* --- Tiêu đề thông báo dài: giới hạn 2 dòng, tránh phá layout --- */
+.announcement-item .content strong {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* =======================================================================
+   MOBILE (≤ 800px): tối ưu lại cho màn hình hẹp
+   ======================================================================= */
+@media (max-width: 800px) {
+  /* Khi ít thông báo, không cần chiều cao cố định trên mobile —
+     để nội dung co giãn tự nhiên, tránh khoảng trắng thừa */
+  .announcements-list:has(> .announcement-item:nth-child(4)) {
+    max-height: 280px;
+  }
+
+  /* Cột "Liên kết nhanh" (Fanpage Đoàn trường / Fanpage Đội TNXK /
+     Sự kiện sắp diễn ra): thay vì xếp dọc chiếm nhiều chỗ, chuyển
+     thành 1 HÀNG CUỘN NGANG dạng pill nhỏ gọn */
+  .announcements-layout .quick-links {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 10px;
+    padding-bottom: 6px;
+    justify-content: flex-start;
+  }
+
+  .announcements-layout .quick-link-item {
+    width: auto;
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+
+  /* Ẩn thanh cuộn ngang cho gọn mắt, vẫn vuốt cuộn được bình thường */
+  .announcements-layout .quick-links::-webkit-scrollbar {
+    height: 0;
+  }
+}
+
+/* --- Màn hình rất hẹp (điện thoại nhỏ, ≤ 420px): thu gọn thêm --- */
+@media (max-width: 420px) {
+  .announcement-item {
+    padding: 12px 14px;
+    gap: 8px;
+  }
+
+  .announcement-item .badge {
+    font-size: 0.62rem;
+    padding: 2px 6px;
+  }
+
+  .announcement-arrow {
+    display: none; /* bớt 1 icon thừa, nhường chỗ cho chữ trên màn hình nhỏ */
+  }
+}
+
+/* =======================================================================
+   REDESIGN: KHUNG THÔNG BÁO (.announcement-item) — phong cách card
+   trắng sạch, bo góc lớn, đổ bóng mềm, tiêu đề to đậm (giống ảnh mẫu
+   "TIN NỔI BẬT NHẤT"). Chỉ style lại các phần TỬ CÓ SẴN (badge, tiêu
+   đề, ngày, mũi tên) — không thêm phần tử mới nên không cần sửa HTML/JS.
+   ======================================================================= */
+
+.announcement-item {
+  background-color: #ffffff;
+  border-left: none;              /* bỏ viền trái màu vàng cũ */
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 20px;
+  padding: 22px 24px;
+  box-shadow: 0 8px 24px rgba(15, 55, 110, 0.08);
+  gap: 16px;
+}
+
+.announcement-item:hover {
+  box-shadow: 0 12px 32px rgba(15, 55, 110, 0.14);
+  transform: translateY(-3px);
+}
+
+/* Badge (VD "TUYỂN THÀNH VIÊN"): chuyển thành pill nền vàng nhạt,
+   chữ đậm, giống badge "TIN NỔI BẬT NHẤT" trong ảnh mẫu */
+.announcement-item .badge {
+  background-color: #fff3cd;
+  color: #b8860b;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 5px 12px;
+  letter-spacing: 0.03em;
+}
+
+.announcement-item .badge::before {
+  content: "🚩 ";
+}
+
+/* Tiêu đề: to, đậm, đen đậm hơn để nổi bật như ảnh mẫu */
+.announcement-item .content strong {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #0d1b2a;
+  line-height: 1.35;
+  margin-bottom: 6px;
+}
+
+/* Ngày tháng: nhạt màu, cỡ nhỏ, giống style phụ đề trong ảnh mẫu */
+.announcement-item .content span.date {
+  color: #8a94a6;
+  font-size: 0.85rem;
+}
+
+/* Mũi tên "→": chuyển thành nút tròn nhỏ, nền xanh nhạt, nổi bật hơn
+   thay vì chỉ là chữ mũi tên trơn */
+.announcement-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(33, 150, 243, 0.1);
+  color: #1565c0;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+a.announcement-item:hover .announcement-arrow {
+  background-color: #1565c0;
+  color: #ffffff;
+  transform: translateX(2px);
+}
+
+/* Khoảng cách giữa các card rộng hơn 1 chút cho thoáng, giống ảnh mẫu */
+.announcements-list {
+  gap: 18px;
+}
+
+@media (max-width: 420px) {
+  .announcement-item {
+    border-radius: 16px;
+    padding: 16px 18px;
+  }
+
+  .announcement-item .content strong {
+    font-size: 1rem;
+  }
+}
+
+/* =======================================================================
+   BỔ SUNG: VIỀN SÁNG NHẸ (glow) quanh mỗi khung thông báo + phóng to
+   3 nút "Liên kết nhanh" cho cao/to đối xứng với 3 khung thông báo bên trái.
+   ======================================================================= */
+
+/* --- Viền sáng nhẹ quanh mỗi card thông báo (glow xanh mờ) --- */
+.announcement-item {
+  border: 1px solid rgba(33, 150, 243, 0.15);
+  box-shadow:
+    0 0 0 1px rgba(33, 150, 243, 0.06),
+    0 0 24px rgba(33, 150, 243, 0.12),
+    0 8px 24px rgba(15, 55, 110, 0.08);
+}
+
+.announcement-item:hover {
+  border-color: rgba(33, 150, 243, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(33, 150, 243, 0.12),
+    0 0 32px rgba(33, 150, 243, 0.2),
+    0 12px 32px rgba(15, 55, 110, 0.14);
+}
+
+/* --- 3 nút bên phải: giãn đều CHIỀU CAO để khớp với 3 khung thông báo
+   bên trái (cột phải vốn đã cao bằng cột trái nhờ CSS grid "stretch"
+   đã có sẵn ở .announcements-layout, giờ chỉ cần cho từng nút TỰ GIÃN
+   đều nhau bằng flex: 1 thay vì co cụm ở giữa) --- */
+.announcements-layout .quick-links {
+  justify-content: space-between;
+}
+
+.announcements-layout .quick-link-item {
+  flex: 1;
+  padding: 24px 22px;
+  border-radius: 20px;
+  font-size: 1.05rem;
+  gap: 14px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.15) inset,
+    0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Icon trong nút: phóng to theo, để cân đối với chữ to hơn */
+.announcements-layout .quick-link-item .quick-link-icon-img,
+.announcements-layout .quick-link-item .quick-link-icon {
+  width: 200px !important;
+  height: 200px !important;
+  font-size: 5.0rem;
+}
+
+/* Mobile: 3 nút quay lại kích thước gọn, tránh quá to trên màn hình nhỏ */
+@media (max-width: 800px) {
+  .announcements-layout .quick-link-item {
+    padding: 12px 18px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+  }
+
+  .announcements-layout .quick-link-item .quick-link-icon-img,
+  .announcements-layout .quick-link-item .quick-link-icon {
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 1rem;
+  }
+}
+
+/* =======================================================================
+   BỔ SUNG: PHÓNG TO + LÀM NỔI BẬT TIÊU ĐỀ "THÔNG BÁO NỔI BẬT"
+   ======================================================================= */
+#announcements-heading {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #0d1b2a;
+  letter-spacing: -0.01em;
+  margin-bottom: 28px;
+}
+
+/* Chấm đỏ nhấp nháy cũng phóng to theo cho cân đối với chữ to hơn */
+#announcements-heading .live-dot {
+  width: 14px;
+  height: 14px;
+}
+
+/* Thêm gạch chân nhỏ màu xanh bên dưới chữ để nhấn thêm, kiểu "underline
+   accent" hiện đại, không cần thêm phần tử HTML mới */
+#announcements-heading {
+  position: relative;
+  padding-bottom: 14px;
+}
+
+#announcements-heading::after {
+  content: "";
+  position: absolute;
+  left: 24px;   /* căn dưới chữ, chừa khoảng cho chấm đỏ phía trước */
+  bottom: 0;
+  width: 64px;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #2196f3, #64b5f6);
+}
+
+@media (max-width: 600px) {
+  #announcements-heading {
+    font-size: 1.5rem;
+  }
+}
+
+/* =======================================================================
+   YÊU CẦU MỚI: chuyển 3 nút "Liên kết nhanh" từ sidebar dọc bên phải
+   xuống thành 1 HÀNG NGANG bên dưới khối "Thông báo nổi bật".
+   Chỉ ghi đè phần layout (grid + flex), không đụng gì tới màu sắc/hiệu
+   ứng hover đã có sẵn ở các khối phía trên. Thứ tự nút giữ nguyên như
+   HTML hiện tại: Đoàn trường -> Đội TNXK -> Sự kiện.
+   ======================================================================= */
+
+/* Bỏ layout 2 cột (trái thông báo / phải sidebar) -> chuyển thành
+   1 cột duy nhất, để 2 khối tự xếp CHỒNG lên nhau (thông báo trên,
+   3 nút dưới) */
+.announcements-layout {
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+/* 3 nút: chuyển từ xếp DỌC (column) sang xếp NGANG (row), chia đều
+   chiều rộng, tự xuống dòng nếu màn hình quá hẹp */
+.announcements-layout .quick-links {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.announcements-layout .quick-link-item {
+  flex: 1 1 220px;   /* mỗi nút chiếm phần bằng nhau, tối thiểu 220px */
+  width: auto;
+  justify-content: center;
+  padding: 18px 20px;
+}
+
+/* Icon trong nút: đưa về kích thước gọn hơn (bản sidebar dọc trước đó
+   đã phóng to icon lên 28px, giờ không cần to như vậy nữa) */
+.announcements-layout .quick-link-item .quick-link-icon-img,
+.announcements-layout .quick-link-item .quick-link-icon {
+  width: 22px !important;
+  height: 22px !important;
+  font-size: 1.1rem;
+}
+
+/* Mobile: giữ hàng ngang nhưng gọn lại, không cần cuộn ngang nữa vì
+   đã cho flex-wrap ở trên tự xuống dòng khi chật chỗ */
+@media (max-width: 800px) {
+  .announcements-layout .quick-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-x: visible;
+    justify-content: center;
+  }
+
+  .announcements-layout .quick-link-item {
+    flex: 1 1 45%;
+    padding: 12px 16px;
+    font-size: 0.85rem;
+  }
+}
+
+/* =======================================================================
+   ĐỒNG BỘ TIÊU ĐỀ "TIN TỨC MỚI" VỚI "THÔNG BÁO NỔI BẬT"
+   Style lại #news-heading (dùng chung class .section-title với các
+   heading khác, nên style riêng theo id để KHÔNG ảnh hưởng tới các
+   heading khác đang dùng .section-title ở những trang/khu vực khác).
+   ======================================================================= */
+#news-heading {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #0d1b2a;
+  letter-spacing: -0.01em;
+  position: relative;
+  padding-bottom: 14px;
+  margin-bottom: 0; /* .section-header-row đã có margin-bottom riêng */
+}
+
+/* Gạch chân nhấn kiểu accent, giống hệt kiểu ở "Thông báo nổi bật",
+   nhưng đổi màu sang vàng/cam để phân biệt 2 khu vực với nhau */
+#news-heading::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 64px;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #f2b705, #ffca28);
+}
+
+/* Hàng chứa tiêu đề + link "Xem tất cả": canh cho "Xem tất cả" nằm
+   ngay ngắn cạnh tiêu đề to hơn, không bị lệch dòng */
+.section-header-row {
+  align-items: flex-end;
+  margin-bottom: 28px;
+}
+
+.see-all-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background-color: rgba(33, 150, 243, 0.1);
+  color: #1565c0;
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+.see-all-link:hover {
+  background-color: #1565c0;
+  color: #fff;
+  transform: translateX(2px);
+}
+
+/* Nút lọc danh mục (Tất cả / Hoạt động / Giới thiệu...): thêm viền +
+   đổ bóng nhẹ cho đẹp hơn, đồng bộ phong cách pill với phần trên */
+.filter-btn {
+  padding: 9px 18px;
+  font-weight: 600;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.filter-btn.active {
+  box-shadow: 0 4px 14px rgba(33, 150, 243, 0.3);
+}
+
+@media (max-width: 600px) {
+  #news-heading {
+    font-size: 1.5rem;
+  }
+
+  .section-header-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* =======================================================================
+   ICON "TIN TỨC" TRƯỚC TIÊU ĐỀ "TIN TỨC MỚI" — tương tự chấm đỏ live
+   trước "Thông báo nổi bật", nhưng dùng icon tờ báo + hiệu ứng "lắc nhẹ"
+   (wiggle) định kỳ, gợi cảm giác "có tin mới" thay vì nhấp nháy đơn điệu.
+   ======================================================================= */
+#news-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.news-icon {
+  display: inline-flex;
+  font-size: 1.6rem;
+  line-height: 1;
+  animation: news-icon-wiggle 1.6s ease-in-out infinite;
+  transform-origin: 70% 70%;
+}
+
+@keyframes news-icon-wiggle {
+  0%, 75%, 100% {
+    transform: rotate(0deg);
+  }
+  80% {
+    transform: rotate(-12deg);
+  }
+  85% {
+    transform: rotate(10deg);
+  }
+  90% {
+    transform: rotate(-6deg);
+  }
+  95% {
+    transform: rotate(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news-icon {
+    animation: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .news-icon {
+    font-size: 1.25rem;
+  }
+}
+
+/* =======================================================================
+   ============  REDESIGN TRANG GIỚI THIỆU 2026 — BẢN ĐẦY ĐỦ  ===========
+   =======================================================================
+   Dán khối này vào CUỐI file style.css (thay cho bản nhỏ trước đó nếu đã
+   dán — có thể xóa bản nhỏ đi hoặc để nguyên, khối này định nghĩa lại
+   đầy đủ hơn nên sẽ tự đè lên do nằm SAU trong file).
+
+   KHÔNG cần sửa gì trong gioi-thieu.html hay gioi-thieu.js — toàn bộ
+   hiệu ứng "bọc khối card" dùng CSS :has() để chọn nguyên 1 <section>
+   dựa vào id tiêu đề bên trong nó (kỹ thuật y hệt bạn đã dùng ở khối
+   ".org-tree-root-row:has(+ .org-tree-branches-row)" phía trên), nên
+   không đụng gì tới cấu trúc HTML/JS hiện có.
+   ======================================================================= */
+
+/* --------- BANNER PHỤ: kính mờ + quầng sáng + badge nhỏ phía trên
+   tiêu đề (thêm bằng CSS ::before, không cần sửa HTML) --------- */
+.page-banner {
+  background: linear-gradient(135deg, #eaf4ff 0%, #ffffff 55%, #fff8e1 100%);
+  padding: 64px 0 48px;
+  border-bottom: none;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-banner::before {
+  content: "";
+  position: absolute;
+  top: -140px;
+  left: 50%;
+  width: 520px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(33, 150, 243, 0.18), transparent 70%);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.page-banner .container::before {
+  content: "★ CÂU CHUYỆN CỦA CHÚNG TÔI";
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #1565c0;
+  background-color: rgba(33, 150, 243, 0.1);
+  padding: 6px 16px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+
+.page-banner h1 {
+  position: relative;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #0d1b2a;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 600px) {
+  .page-banner { padding: 44px 0 32px; }
+  .page-banner h1 { font-size: 1.5rem; }
+  .page-banner .container::before { font-size: 0.62rem; padding: 5px 12px; }
+}
+
+/* --------- TIÊU ĐỀ 3 MỤC CHÍNH: icon + gạch chân accent, đồng bộ
+   #news-heading/#announcements-heading đã làm ở trang chủ --------- */
+#history-heading, #goals-heading, #achievements-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.9rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  position: relative;
+  padding-bottom: 14px;
+  margin-bottom: 28px;
+}
+
+#history-heading, #goals-heading { color: #0d1b2a; }
+
+#history-heading::before { content: "📜"; font-size: 1.5rem; }
+#goals-heading::before { content: "🎯"; font-size: 1.5rem; }
+#achievements-heading::before { content: "🏆"; font-size: 1.5rem; }
+
+#history-heading::after, #goals-heading::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 64px; height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #2196f3, #64b5f6);
+}
+
+#goals-heading::after { background: linear-gradient(90deg, #f2b705, #ffca28); }
+
+@media (max-width: 600px) {
+  #history-heading, #goals-heading, #achievements-heading { font-size: 1.4rem; }
+}
+
+/* --------- KHỐI "LỊCH SỬ THÀNH LẬP": bọc cả section thành 1 panel
+   trắng bo góc lớn, đổ bóng mềm — dùng :has() nên KHÔNG cần class
+   mới trong HTML --------- */
+.section:has(#history-heading) {
+  background-color: #ffffff;
+  border: 1px solid rgba(33, 150, 243, 0.08);
+  border-radius: 32px;
+  padding: 48px 40px;
+  box-shadow: 0 10px 32px rgba(15, 55, 110, 0.06);
+}
+
+/* Ô Lịch sử thành lập: viền accent trái + dấu ngoặc kép mờ làm nền
+   trang trí phía sau, gợi cảm giác "trích dẫn/tự sự" */
+.founder-box {
+  position: relative;
+  background-color: var(--color-bg-alt);
+  border-left: 4px solid var(--color-primary);
+  border-radius: 20px;
+  padding: 28px 32px;
+  overflow: hidden;
+}
+
+.founder-box::after {
+  content: "”";
+  position: absolute;
+  top: -30px;
+  right: 20px;
+  font-size: 9rem;
+  font-weight: 800;
+  color: rgba(33, 150, 243, 0.06);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.founder-year strong, .founder-name strong { color: var(--color-primary); }
+
+.founder-desc {
+  position: relative;
+  margin-top: 12px;
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+
+/* --------- TIÊU ĐỀ PHỤ: "Giáo viên cố vấn" / "Các đời chỉ huy..." --------- */
+.subsection-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-top: 44px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgba(33, 150, 243, 0.1);
+}
+
+/* --------- GIÁO VIÊN CỐ VẤN: nền panel nhẹ phân biệt với timeline
+   bên dưới, thẻ advisor giữ nguyên style cũ (đã ổn), chỉ thêm
+   khoảng đệm + nền cho khu vực --------- */
+#advisorsGrid {
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+.advisor-card {
+  box-shadow: 0 4px 16px rgba(15, 55, 110, 0.05);
+}
+
+.advisor-card:hover {
+  box-shadow: 0 10px 28px rgba(15, 55, 110, 0.12);
+}
+
+/* --------- CÁC ĐỜI CHỈ HUY (.org-card trong #leadershipTimeline):
+   thêm dải ruy băng "Nhiệm kỳ" + zoom ảnh khi hover, ảnh cao hơn để
+   giống thẻ "polaroid" thay vì icon tròn nhỏ --------- */
+#leadershipTimeline {
+  margin-top: 24px;
+}
+
+#leadershipTimeline .org-card {
+  --op-card-w: 100%;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 20px;
+  border-width: 1px;
+  transition: transform var(--transition), box-shadow var(--transition);
+  text-align: left;
+  align-items: stretch;
+}
+
+#leadershipTimeline .org-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(15, 55, 110, 0.14);
+  border-color: var(--color-primary);
+}
+
+#leadershipTimeline .org-card-img {
+  --op-avatar: 100%;
+  width: 100%;
+  height: 180px;
+  border-radius: 0;
+  object-fit: cover;
+  border: none;
+  margin-bottom: 0;
+  transition: transform 0.5s ease;
+}
+
+#leadershipTimeline .org-card:hover .org-card-img {
+  transform: scale(1.06);
+}
+
+#leadershipTimeline .org-card > div {
+  padding: 16px 18px 20px;
+}
+
+#leadershipTimeline .org-card-title {
+  display: inline-block;
+  background-color: rgba(33, 150, 243, 0.1);
+  color: #1565c0;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  margin-bottom: 6px;
+}
+
+#leadershipTimeline .org-card-name {
+  font-size: 1.05rem;
+  color: var(--color-text);
+}
+
+/* --------- MỤC TIÊU HOẠT ĐỘNG: bọc thành panel + chia 2 cột trên
+   desktop, mỗi mục có huy hiệu tròn thay vì dấu ✓ trần --------- */
+.section:has(#goals-heading) {
+  background-color: var(--color-bg-alt);
+  border-radius: 32px;
+  padding: 48px 40px;
+}
+
+.goals-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px 32px;
+}
+
+@media (min-width: 700px) {
+  .goals-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.goals-list li {
+  padding: 12px 0 12px 40px;
+  font-size: 1.02rem;
+  background-color: #ffffff;
+  border-radius: 14px;
+  margin: 0;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-right: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+.goals-list li::before {
+  content: "✓";
+  left: 14px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: rgba(33, 150, 243, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  top: 14px;
+}
+
+/* --------- THÀNH TÍCH: nâng cấp thành dải "Bảng vàng" nền tối +
+   glow, giống phong cách footer đã có sẵn của site (đồng bộ luôn
+   dải màu tối duy nhất trên trang, tạo điểm nhấn kết bài) --------- */
+.section:has(#achievements-heading) {
+  background-color: #0d1b2a;
+  border-radius: 32px;
+  padding: 48px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.section:has(#achievements-heading)::before {
+  content: "";
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 360px; height: 360px;
+  background: radial-gradient(circle, rgba(33, 150, 243, 0.28), transparent 70%);
+  pointer-events: none;
+}
+
+.section:has(#achievements-heading)::after {
+  content: "";
+  position: absolute;
+  bottom: -100px; left: -100px;
+  width: 360px; height: 360px;
+  background: radial-gradient(circle, rgba(242, 183, 5, 0.18), transparent 70%);
+  pointer-events: none;
+}
+
+#achievements-heading {
+  color: #ffffff;
+  position: relative;
+  z-index: 1;
+}
+
+#achievements-heading::after {
+  background: linear-gradient(90deg, #f2b705, #ffca28);
+}
+
+.achievements-grid {
+  position: relative;
+  z-index: 1;
+}
+
+.section:has(#achievements-heading) .achievement-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section:has(#achievements-heading) .achievement-card:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+.section:has(#achievements-heading) .achievement-title {
+  color: #ffffff;
+}
+
+.section:has(#achievements-heading) .achievement-desc {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.section:has(#achievements-heading) .achievement-year {
+  background-color: #f2b705;
+  color: #1a1a1a;
+}
+
+@media (max-width: 600px) {
+  .section:has(#history-heading),
+  .section:has(#goals-heading),
+  .section:has(#achievements-heading) {
+    padding: 32px 20px;
+    border-radius: 24px;
+  }
+}
+
+/* --------- FIX QUAN TRỌNG: .modal-box-wide và .modal-body-blocks
+   dùng trong modal "Xem chi tiết →" của Thành tích nhưng CHƯA từng
+   được định nghĩa trong style.css — modal hiện hiển thị bằng style
+   mặc định trình duyệt. Bổ sung, đồng thời chỉnh modal cho hợp với
+   nền tối của khối Thành tích phía trên (modal vẫn nền trắng bình
+   thường vì nó hiện ra TRÊN toàn trang, không nằm trong khối tối). --------- */
+.modal-box-wide {
+  max-width: 680px;
+  text-align: left;
+}
+
+.modal-box-wide .modal-name {
+  text-align: left;
+}
+
+.modal-body-blocks {
+  margin-top: 8px;
+  color: var(--color-text);
+  line-height: 1.8;
+}
+
+@media (max-width: 720px) {
+  .modal-box-wide {
+    max-width: 92vw;
+  }
+}
+
+/* --------- NÚT "Xem chi tiết →" TRONG THẺ THÀNH TÍCH: chưa có style
+   riêng trước đây (mặc định trình duyệt) — đồng bộ với nút "Xem thêm"
+   bên Tin tức, đổi màu vàng vì nằm trên nền tối --------- */
+.achievement-view-detail-btn {
+  margin-top: 10px;
+  background: none;
+  border: none;
+  color: #ffca28;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+}
+
+.achievement-view-detail-btn:hover {
+  text-decoration: underline;
+}
+
+/* Ảnh trong thẻ Thành tích: khung viền mờ trắng cho hợp nền tối */
+.section:has(#achievements-heading) .achievement-img {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* =======================================================================
+   PATCH: THẺ NHIỆM KỲ (#leadershipTimeline .org-card) — ĐỔI VỀ ẢNH TRÒN
+   NHỎ Ở GIỮA, giống hệt bố cục thẻ Giáo viên cố vấn (.advisor-card),
+   thay vì ảnh full-width kiểu polaroid. Dán SAU khối "REDESIGN TRANG
+   GIỚI THIỆU 2026 — BẢN ĐẦY ĐỦ" để các rule này được ưu tiên áp dụng
+   (cascade CSS: rule nằm sau trong file thắng rule nằm trước với cùng
+   độ ưu tiên selector). Không cần sửa gì HTML/JS.
+   ======================================================================= */
+
+#leadershipTimeline .org-card {
+  padding: 20px 18px;
+  text-align: center;
+  align-items: center;
+}
+
+#leadershipTimeline .org-card-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-border);
+  margin: 0 auto 12px;
+  transition: transform var(--transition);
+}
+
+#leadershipTimeline .org-card:hover .org-card-img {
+  transform: scale(1.05);
+}
+
+#leadershipTimeline .org-card > div {
+  padding: 0;
+  text-align: center;
+}
+
+#leadershipTimeline .org-card-title {
+  display: inline-block;
+  background-color: rgba(33, 150, 243, 0.1);
+  color: #1565c0;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  margin-bottom: 6px;
+}
+
+#leadershipTimeline .org-card-name {
+  font-size: 1.05rem;
+  color: var(--color-text);
+  display: block;
+}
+
+/* =======================================================================
+   PATCH 2: THẺ NHIỆM KỲ — THU NHỎ VỀ ĐÚNG BỀ RỘNG NHƯ THẺ GIÁO VIÊN CỐ
+   VẤN (hiện đang bị full-width vì biến --op-card-w bị đặt là 100% ở
+   patch trước). Dán SAU CÙNG (sau patch tròn ảnh lúc nãy) để ghi đè.
+   Không cần sửa HTML/JS.
+   ======================================================================= */
+
+#leadershipTimeline.org-cards-grid {
+  justify-content: center;
+}
+
+#leadershipTimeline .org-card {
+  --op-card-w: 240px;   /* ghi đè lại giá trị 100% đã đặt trước đó */
+  width: 240px;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 480px) {
+  #leadershipTimeline .org-card {
+    --op-card-w: 100%;
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+.container {
+  max-width: 100%;
+  padding: 0 40px;
+}
+
+/* =======================================================================
+   BỐ CỤC MỚI: đưa "Giáo viên cố vấn" lên NGANG HÀNG với "Lịch sử thành lập"
+   (2 cột). Dùng CSS Grid + grid-area, không cần sửa HTML/JS vì thứ tự
+   phần tử trong DOM vẫn giữ nguyên như cũ.
+   ======================================================================= */
+.section:has(#history-heading) {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  column-gap: 40px;
+  grid-template-areas:
+    "hist-title  adv-title"
+    "hist-box    adv-box"
+    "lead-title  lead-title"
+    "lead-box    lead-box";
+  align-items: start;
+}
+
+#history-heading { grid-area: hist-title; }
+#founderInfo      { grid-area: hist-box; margin-bottom: 0; }
+
+.section:has(#history-heading) .subsection-title:nth-of-type(1) {
+  grid-area: adv-title;
+  margin-top: 0;
+}
+#advisorsGrid { grid-area: adv-box; margin-top: 0; }
+
+.section:has(#history-heading) .subsection-title:nth-of-type(2) {
+  grid-area: lead-title;
+  margin-top: 44px;
+}
+#leadershipTimeline { grid-area: lead-box; }
+
+/* Cột phải hẹp hơn -> xếp thẻ giáo viên cố vấn THEO CHIỀU DỌC thay vì
+   dàn ngang như trước (ghi đè rule !important cũ của #advisorsGrid) */
+.section:has(#history-heading) #advisorsGrid {
+  flex-direction: column !important;
+  align-items: stretch !important;
+}
+
+.section:has(#history-heading) #advisorsGrid .advisor-card {
+  width: 100%;
+}
+
+/* Màn hình hẹp (≤900px): quay lại xếp dọc như cũ cho dễ đọc */
+@media (max-width: 900px) {
+  .section:has(#history-heading) {
+    display: block;
+  }
+
+  .section:has(#history-heading) .subsection-title:nth-of-type(1),
+  .section:has(#history-heading) .subsection-title:nth-of-type(2) {
+    margin-top: 44px;
+  }
+
+  .section:has(#history-heading) #advisorsGrid {
+    flex-direction: row !important;
+    align-items: center !important;
+  }
+}
+
+/* =======================================================================
+   ĐỒNG BỘ TIÊU ĐỀ PHỤ ("Giáo viên cố vấn" / "Các đời chỉ huy qua từng
+   nhiệm kỳ") VỚI TIÊU ĐỀ "Lịch sử thành lập" — cùng font-size, độ đậm,
+   màu, icon phía trước + gạch chân accent. Dùng lại đúng 2 selector
+   :nth-of-type đã dùng ở khối layout 2 cột trước đó nên không cần sửa
+   HTML/JS gì thêm.
+   ======================================================================= */
+.section:has(#history-heading) .subsection-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #0d1b2a;
+  letter-spacing: -0.01em;
+  position: relative;
+  padding-bottom: 14px;
+  border-bottom: none; /* bỏ gạch mờ mảnh cũ, thay bằng accent bên dưới */
+}
+
+.section:has(#history-heading) .subsection-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 64px;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #2196f3, #64b5f6);
+}
+
+/* Icon riêng cho từng tiêu đề, giống 📜 của "Lịch sử thành lập" */
+.section:has(#history-heading) .subsection-title:nth-of-type(1)::before {
+  content: "🎓"; /* Giáo viên cố vấn */
+  font-size: 1.5rem;
+}
+
+.section:has(#history-heading) .subsection-title:nth-of-type(2)::before {
+  content: "🎖️"; /* Các đời chỉ huy qua từng nhiệm kỳ */
+  font-size: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .section:has(#history-heading) .subsection-title {
+    font-size: 1.4rem;
+  }
+}
+
+/* =======================================================================
+   FIX: DÒNG TIÊU ĐỀ PHỤ TRONG "MỤC TIÊU HOẠT ĐỘNG" (VD: "Các mục tiêu
+   chính gồm:") — trước đây bị render y hệt 1 mục tiêu thường (có dấu ✓,
+   nằm gọn trong 1 ô của lưới 2 cột) khiến nó trở thành 1 ô trống to và
+   làm 2 cột bị lệch chiều cao. Giờ gioi-thieu.js đã tự nhận diện dòng
+   này (kết thúc bằng dấu ":") và gắn class "goals-list-heading" riêng —
+   CSS bên dưới style nó thành 1 dòng tiêu đề phụ chạy full chiều ngang,
+   không có dấu tick, không bọc khung card như các mục tiêu thật.
+   ======================================================================= */
+.goals-list li.goals-list-heading {
+  grid-column: 1 / -1;
+  padding-left: 0;
+  padding-top: 8px;
+  padding-bottom: 2px;
+  background-color: transparent;
+  box-shadow: none;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-primary);
+}
+
+.goals-list li.goals-list-heading::before {
+  content: none;
+}
+
+/* =======================================================================
+   FIX: LAYOUT "MỤC TIÊU HOẠT ĐỘNG" — 2 CỘT TỰ CÂN BẰNG CHIỀU CAO
+   Trước đây dùng CSS Grid 2 cột cố định, item chia theo thứ tự trái-
+   phải-trái-phải nên khi số lượng item không chia hết cho 2, cột phải
+   bị hụt 1 ô (VD: 3 thẻ trái / 2 thẻ phải như trong ảnh) → đáy 2 cột
+   lệch nhau.
+   Giờ đổi sang CSS multi-column (column-count): trình duyệt tự "cân"
+   (balance) sao cho tổng chiều cao 2 cột gần bằng nhau nhất có thể,
+   dựa trên chiều cao THẬT của từng card (card dài/ngắn khác nhau vẫn
+   được tính đúng) — không còn dựa vào set chẵn/lẻ nữa.
+   Dòng tiêu đề phụ (.goals-list-heading) dùng "column-span: all" để
+   luôn chạy full-width, không bị kẹt vào 1 trong 2 cột.
+   ======================================================================= */
+.goals-list {
+  display: block;
+  column-count: 1;
+  column-gap: 32px;
+}
+
+@media (min-width: 700px) {
+  .goals-list {
+    column-count: 2;
+  }
+}
+
+.goals-list li {
+  break-inside: avoid;        /* không cho 1 card bị cắt đôi giữa 2 cột */
+  -webkit-column-break-inside: avoid;
+  margin-bottom: 14px;        /* khoảng cách giữa các card theo chiều dọc */
+}
+
+.goals-list li:last-child {
+  margin-bottom: 0;
+}
+
+.goals-list li.goals-list-heading {
+  column-span: all;           /* luôn chạy full-width, không nằm lọt vào 1 cột */
+  margin-bottom: 4px;
+}
+
+/* =======================================================================
+   REDESIGN "MỤC TIÊU HOẠT ĐỘNG" — mỗi mục tiêu thành 1 THẺ có icon
+   khung riêng, nền gradient theo từng thẻ, và số thứ tự mờ ở góc
+   (giống ảnh mẫu). Selector dùng thêm class .goal-card kèm .goals-list
+   li để có độ ưu tiên CAO HƠN rule cũ ".goals-list li" / ".goals-list
+   li::before" phía trên, tránh bị dấu ✓ và padding cũ đè lên.
+   ======================================================================= */
+.goals-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 700px) {
+  .goals-list { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1000px) {
+  .goals-list { grid-template-columns: repeat(3, 1fr); }
+}
+
+.goals-list li.goals-list-heading {
+  grid-column: 1 / -1; /* dòng tiêu đề phụ chạy full chiều ngang trong grid mới */
+}
+
+.goals-list li.goal-card {
+  position: relative;
+  overflow: hidden;
+  padding: 28px 22px 24px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 16px rgba(15, 55, 110, 0.05);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.goals-list li.goal-card::before {
+  content: none; /* tắt dấu ✓ mặc định */
+}
+
+.goals-list li.goal-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(15, 55, 110, 0.12);
+}
+
+.goal-card-icon {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 16px;
+}
+
+.goal-card-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.goal-card-text {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #0d1b2a;
+}
+
+.goal-card-number {
+  position: absolute;
+  right: 10px;
+  bottom: -10px;
+  font-size: 4.2rem;
+  font-weight: 800;
+  line-height: 1;
+  z-index: 0;
+  user-select: none;
+}
+
+/* 3 biến thể màu, xoay vòng theo variant JS gán (1/2/3) */
+.goal-card--variant-1 {
+  background: linear-gradient(160deg, #e8f1ff 0%, #ffffff 60%);
+}
+.goal-card--variant-1 .goal-card-icon { color: #1565c0; }
+.goal-card--variant-1 .goal-card-number { color: rgba(33, 150, 243, 0.1); }
+
+.goal-card--variant-2 {
+  background: linear-gradient(160deg, #fff8e1 0%, #ffffff 60%);
+}
+.goal-card--variant-2 .goal-card-icon { color: #b8860b; }
+.goal-card--variant-2 .goal-card-number { color: rgba(242, 183, 5, 0.12); }
+
+.goal-card--variant-3 {
+  background: linear-gradient(160deg, #ffe9ee 0%, #ffffff 60%);
+}
+.goal-card--variant-3 .goal-card-icon { color: #d81b60; }
+.goal-card--variant-3 .goal-card-number { color: rgba(216, 27, 96, 0.1); }
+
+@media (max-width: 480px) {
+  .goal-card-number { font-size: 3.2rem; }
+  .goals-list li.goal-card { padding: 22px 18px 20px; }
+}
+
+/* =======================================================================
+   5 ANIMATION RIÊNG CHO 5 ICON TRƯỚC TIÊU ĐỀ (Lịch sử thành lập / Giáo
+   viên cố vấn / Các đời chỉ huy / Mục tiêu hoạt động / Thành tích).
+   Chỉ thêm "animation" vào các ::before ĐÃ có sẵn content icon (📜🎓🎖️🎯🏆)
+   ở khối "REDESIGN TRANG GIỚI THIỆU 2026" phía trên — không sửa gì
+   HTML/JS, không đổi lại icon đã chọn.
+   ======================================================================= */
+
+/* 1. 📜 Lịch sử thành lập — lắc nhẹ qua lại như cuộn giấy đung đưa */
+#history-heading::before {
+  display: inline-block;
+  animation: icon-sway 3s ease-in-out infinite;
+  transform-origin: 50% 90%;
+}
+@keyframes icon-sway {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-8deg); }
+  75% { transform: rotate(8deg); }
+}
+
+/* 2. 🎓 Giáo viên cố vấn — gật đầu nhẹ */
+.section:has(#history-heading) .subsection-title:nth-of-type(1)::before {
+  display: inline-block;
+  animation: icon-nod 2.4s ease-in-out infinite;
+  transform-origin: 50% 80%;
+}
+@keyframes icon-nod {
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  50% { transform: rotate(-10deg) translateY(-1px); }
+}
+
+/* 3. 🎖️ Các đời chỉ huy qua từng nhiệm kỳ — lắc lư như huy chương đung đưa */
+.section:has(#history-heading) .subsection-title:nth-of-type(2)::before {
+  display: inline-block;
+  animation: icon-swing 2.8s ease-in-out infinite;
+  transform-origin: 50% 0%;
+}
+@keyframes icon-swing {
+  0%, 100% { transform: rotate(0deg); }
+  30% { transform: rotate(12deg); }
+  60% { transform: rotate(-12deg); }
+}
+
+/* 4. 🎯 Mục tiêu hoạt động — phóng to thu nhỏ nhịp nhàng như target pulse */
+#goals-heading::before {
+  display: inline-block;
+  animation: icon-target-pulse 1.8s ease-in-out infinite;
+}
+@keyframes icon-target-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.18); }
+}
+
+/* 5. 🏆 Thành tích — nhún nhẹ lên xuống như đang được nâng lên vinh danh */
+#achievements-heading::before {
+  display: inline-block;
+  animation: icon-trophy-bounce 2s ease-in-out infinite;
+}
+@keyframes icon-trophy-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Tôn trọng người dùng đã bật "giảm chuyển động" trong hệ điều hành */
+@media (prefers-reduced-motion: reduce) {
+  #history-heading::before,
+  #goals-heading::before,
+  #achievements-heading::before,
+  .section:has(#history-heading) .subsection-title:nth-of-type(1)::before,
+  .section:has(#history-heading) .subsection-title:nth-of-type(2)::before {
+    animation: none;
+  }
+}
+
+/* =======================================================================
+   FIX: THẺ THÀNH TÍCH giờ bấm được TOÀN THẺ để xem chi tiết (đã bỏ nút
+   "Xem chi tiết →" khỏi HTML render trong gioi-thieu.js) — thêm con trỏ
+   dạng bàn tay để báo hiệu trực quan là bấm được.
+   ======================================================================= */
+.achievement-card {
+  cursor: pointer;
+}
+
+/* =======================================================================
+   FIX: Dấu ngoặc kép trang trí trong khung "Lịch sử thành lập" bị vỡ
+   hình / lệch góc do font quá to (9rem) bị .founder-box (overflow:
+   hidden + border-radius) cắt xén. Thu nhỏ lại + đặt đúng vị trí góc
+   trên-phải, không còn bị cắt vỡ, vẫn giữ hiệu ứng nền mờ trang trí.
+   ======================================================================= */
+.founder-box::after {
+  top: 4px;
+  right: 16px;
+  font-size: 5rem;
+  line-height: 1;
+}
+
+/* =======================================================================
+   FIX: Bỏ hẳn dấu ngoặc kép trang trí (nền mờ) trong khung "Lịch sử
+   thành lập" theo yêu cầu — không chỉ thu nhỏ mà ẩn đi hoàn toàn.
+   ======================================================================= */
+.founder-box::after {
+  content: none;
+}
+
+/* =======================================================================
+   FIX: Bỏ badge trang trí "★ CÂU CHUYỆN CỦA CHÚNG TÔI" phía trên tiêu
+   đề trong .page-banner theo yêu cầu.
+   ======================================================================= */
+.page-banner .container::before {
+  content: none;
+}
+
+/* =======================================================================
+   ĐIỂM NHẤN CHO BANNER TIÊU ĐỀ TRANG (.page-banner h1) — chữ gradient +
+   hiệu ứng xuất hiện nhẹ nhàng + gạch chân "vẽ ra" + quầng sáng nền động.
+   Chỉ thêm mới, không sửa gì HTML/JS.
+   ======================================================================= */
+
+.page-banner h1 {
+  display: inline-block;
+  background: linear-gradient(90deg, #0d47a1, #2196f3, #64b5f6, #2196f3, #0d47a1);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  position: relative;
+  padding-bottom: 18px;
+  opacity: 0;
+  animation:
+    page-banner-title-in 0.8s ease forwards,
+    page-banner-title-shine 6s linear infinite 0.8s;
+}
+
+/* Chữ trượt nhẹ lên + mờ dần khi trang vừa tải, chỉ chạy 1 lần */
+@keyframes page-banner-title-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Gradient tự chạy chậm rãi trong chữ, tạo cảm giác "ánh sáng lướt qua" */
+@keyframes page-banner-title-shine {
+  from { background-position: 250% center; }
+  to { background-position: -250% center; }
+}
+
+/* Gạch chân accent bên dưới tiêu đề, tự "vẽ" ra từ giữa ra 2 bên */
+.page-banner h1::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #2196f3, #64b5f6);
+  transform: translateX(-50%);
+  animation: page-banner-underline-grow 0.7s ease forwards 0.5s;
+}
+
+@keyframes page-banner-underline-grow {
+  from { width: 0; }
+  to { width: 90px; }
+}
+
+/* 2 quầng sáng mờ ảo hai bên nền banner, di chuyển rất chậm để tạo
+   chiều sâu, không gây rối mắt */
+.page-banner {
+  position: relative;
+  overflow: hidden;
+}
+
+.page-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle 220px at 12% 30%, rgba(33, 150, 243, 0.14), transparent 70%),
+    radial-gradient(circle 260px at 88% 70%, rgba(100, 181, 246, 0.16), transparent 70%);
+  animation: page-banner-glow-drift 10s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes page-banner-glow-drift {
+  from { transform: translateX(-14px); }
+  to { transform: translateX(14px); }
+}
+
+/* Tôn trọng người dùng đã bật "giảm chuyển động" trong hệ điều hành */
+@media (prefers-reduced-motion: reduce) {
+  .page-banner h1 {
+    opacity: 1;
+    animation: none;
+  }
+  .page-banner h1::after {
+    width: 90px;
+    animation: none;
+  }
+  .page-banner::after {
+    animation: none;
+  }
+}
+
+/* =======================================================================
+   BỔ SUNG 2 (BẢN SỬA LỖI): Shimmer cho chữ tiêu đề (đã fix lỗi mất chữ)
+   + 2 icon bay lượn quanh tiêu đề + viền phát sáng nhấp nháy quanh banner
+   (thay cho kỹ thuật "viền chạy vòng" cũ bị lỗi vệt chéo).
+   ======================================================================= */
+
+/* --- 1. Shimmer cho chữ tiêu đề — ĐÃ SỬA LỖI mất chữ do "background"
+   viết tắt reset mất background-clip. Khai báo lại rõ ràng ở cuối. --- */
+.page-banner h1 {
+  background: linear-gradient(
+    100deg,
+    #0d47a1 30%,
+    #64b5f6 47%,
+    #ffffff 50%,
+    #64b5f6 53%,
+    #0d47a1 65%
+  );
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation:
+    page-banner-title-in 0.8s ease forwards,
+    page-banner-title-shine 6.5s linear infinite 0.8s;
+    
+}
+
+/* --- 2. Icon bay lượn nhẹ quanh tiêu đề (giữ nguyên, không lỗi) --- */
+.page-banner-float-icon {
+  position: absolute;
+  font-size: 1.8rem;
+  opacity: 0.55;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 10px rgba(13, 71, 161, 0.15));
+}
+
+.page-banner-float-icon-1 {
+  top: 18%;
+  left: 20%;
+  animation: page-banner-icon-float-1 5s ease-in-out infinite;
+}
+
+.page-banner-float-icon-2 {
+  bottom: 18%;
+  right: 20%;
+  animation: page-banner-icon-float-2 6s ease-in-out infinite;
+}
+
+@keyframes page-banner-icon-float-1 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(-8px, -14px) rotate(-8deg); }
+}
+
+@keyframes page-banner-icon-float-2 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(8px, -14px) rotate(8deg); }
+}
+
+@media (max-width: 700px) {
+  .page-banner-float-icon {
+    display: none;
+  }
+}
+
+/* --- 3. Viền phát sáng NHẤP NHÁY quanh banner — thay cho "viền chạy
+   vòng" bị lỗi vệt chéo. Cách này ổn định trên mọi tỷ lệ khung. --- */
+.page-banner {
+  animation: page-banner-glow-border 3s ease-in-out infinite;
+}
+
+@keyframes page-banner-glow-border {
+  0%, 100% {
+    box-shadow: 0 0 0 1px rgba(33, 150, 243, 0.15), 0 0 20px rgba(33, 150, 243, 0.08);
+  }
+  50% {
+    box-shadow: 0 0 0 1px rgba(33, 150, 243, 0.4), 0 0 32px rgba(33, 150, 243, 0.22);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-banner-float-icon,
+  .page-banner {
+    animation: none;
+  }
+}
+
+/* =======================================================================
+   ĐỒNG BỘ TIÊU ĐỀ "SƠ ĐỒ TỔ CHỨC ĐỘI TNXK" VỚI "THÔNG BÁO NỔI BẬT"
+   (trang co-cau-to-chuc.html). Style riêng theo #org-heading nên
+   KHÔNG ảnh hưởng các heading khác đang dùng chung .section-title.
+   ======================================================================= */
+#org-heading {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #0d1b2a;
+  letter-spacing: -0.01em;
+  margin-bottom: 28px;
+}
+
+/* Icon 🏛️ trước tiêu đề — lắc nhẹ + phóng to thu nhỏ, giống tinh thần
+   .live-dot (nhấp nháy) nhưng dùng icon thay vì chấm tròn */
+.org-heading-icon {
+  display: inline-flex;
+  font-size: 1.8rem;
+  line-height: 1;
+  animation: org-heading-icon-wobble 3s ease-in-out infinite;
+  transform-origin: 50% 60%;
+}
+
+@keyframes org-heading-icon-wobble {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(-8deg) scale(1.1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .org-heading-icon {
+    animation: none;
+  }
+}
+
+@media (max-width: 600px) {
+  #org-heading {
+    font-size: 1.5rem;
+  }
+
+  .org-heading-icon {
+    font-size: 1.3rem;
+  }
+}
+
+/* =======================================================================
+   SƠ ĐỒ TỔ CHỨC (co-cau-to-chuc.html): đồng bộ font "Be Vietnam Pro"
+   cho toàn bộ sơ đồ + đổi màu ô gốc "Đội Chỉ Huy" sang xanh dương,
+   đồng bộ với tông màu xanh (#2196f3/#1565c0) đang dùng trong bản
+   redesign 2026 (heading, nút, badge...) thay cho xanh lá cũ.
+   Cần thêm link Google Fonts "Be Vietnam Pro" vào <head> của
+   co-cau-to-chuc.html (xem hướng dẫn bên dưới) để font hiển thị đúng.
+   ======================================================================= */
+.org-tree-chart,
+.org-tree-chart * {
+  font-family: "Be Vietnam Pro", var(--font-base);
+}
+
+.org-tree-root-box {
+  background: linear-gradient(135deg, #2196f3, #1565c0);
+  box-shadow: 0 6px 18px rgba(33, 150, 243, 0.35);
+}
+
+.org-tree-root-box:hover {
+  box-shadow: 0 10px 24px rgba(33, 150, 243, 0.45);
+}
+
+/* =======================================================================
+   FIX: CANH GIỮA TOÀN BỘ SƠ ĐỒ TỔ CHỨC TRONG TRANG
+   Ép canh giữa ngay từ khung cha #orgPositionsList (nơi JS render cây
+   sơ đồ vào), đảm bảo sơ đồ luôn nằm chính giữa trang bất kể chiều
+   rộng thực tế của .org-tree-chart. Không cần sửa HTML/JS.
+   ======================================================================= */
+#orgPositionsList {
+  display: flex;
+  justify-content: center;
+}
+
+.org-tree-chart {
+  margin: 0 auto;
+}
+
+/* =======================================================================
+   DECORATE TRANG "CHỈ HUY QUA CÁC NHIỆM KỲ" (chi-huy-qua-cac-nhiem-ky.html)
+   Chỉ thêm mới, scope toàn bộ bằng #leadershipByTermContainer để KHÔNG
+   ảnh hưởng .org-card ở co-cau-to-chuc.html hay #leadershipTimeline bên
+   gioi-thieu.html. Không sửa HTML/JS.
+   ======================================================================= */
+
+/* --------- Nền trang: gradient mesh nhẹ xanh/vàng ở 2 góc --------- */
+main:has(#leadershipByTermContainer) {
+  position: relative;
+}
+
+main:has(#leadershipByTermContainer)::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle 420px at 8% 15%, rgba(33, 150, 243, 0.06), transparent 70%),
+    radial-gradient(circle 380px at 92% 85%, rgba(242, 183, 5, 0.06), transparent 70%);
+  pointer-events: none;
+}
+
+/* --------- Tiêu đề mỗi nhiệm kỳ: icon + badge thời gian + gạch chân --------- */
+#leadershipByTermContainer .org-level-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #0d1b2a;
+  padding-bottom: 16px;
+  margin-bottom: 32px;
+}
+
+#leadershipByTermContainer .org-level-section-title::before {
+  content: "🎖️";
+  font-size: 1.3rem;
+  display: inline-block;
+  animation: leadership-title-icon-swing 2.8s ease-in-out infinite;
+  transform-origin: 50% 0%;
+}
+
+@keyframes leadership-title-icon-swing {
+  0%, 100% { transform: rotate(0deg); }
+  30% { transform: rotate(10deg); }
+  60% { transform: rotate(-10deg); }
+}
+
+#leadershipByTermContainer .org-level-section-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #2196f3, #f2b705);
+}
+
+#leadershipByTermContainer .org-level-section-title {
+  position: relative;
+}
+
+/* --------- Timeline: đường kẻ + chấm nối giữa các nhiệm kỳ --------- */
+#leadershipByTermContainer .org-level-section {
+  position: relative;
+  padding-top: 8px;
+}
+
+#leadershipByTermContainer .org-level-section:not(:first-child)::before {
+  content: "";
+  display: block;
+  width: 2px;
+  height: 40px;
+  margin: 0 auto 8px;
+  background: linear-gradient(180deg, transparent, rgba(33, 150, 243, 0.35), transparent);
+}
+
+#leadershipByTermContainer .org-level-section:not(:first-child)::after {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #2196f3;
+  box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.15);
+  margin: -8px auto 20px;
+}
+
+/* --------- Nhóm cấp bậc (VD "Trưởng ban"): pill nền nhẹ + icon --------- */
+#leadershipByTermContainer .leadership-level-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(33, 150, 243, 0.08);
+  color: #1565c0;
+  padding: 6px 18px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+#leadershipByTermContainer .leadership-level-title::before {
+  content: "★";
+  font-size: 0.75rem;
+  color: #f2b705;
+}
+
+#leadershipByTermContainer .leadership-level-title {
+  display: table;
+  margin: 0 auto 16px;
+}
+
+/* --------- Card chỉ huy: hover mượt hơn + viền phát sáng cho nhóm đầu tiên --------- */
+#leadershipByTermContainer .org-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color var(--transition);
+}
+
+#leadershipByTermContainer .org-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 32px rgba(15, 55, 110, 0.16);
+}
+
+/* Nhóm "Đội chỉ huy" (nhóm cấp bậc ĐẦU TIÊN trong mỗi nhiệm kỳ) có viền
+   vàng sẵn từ buildLevelSizeVars() -> thêm hiệu ứng phát sáng nhấp nháy
+   nhẹ để nổi bật hơn các nhóm còn lại, không cần sửa gì trong JS */
+#leadershipByTermContainer .leadership-level-group:first-of-type .org-card {
+  animation: leadership-top-card-glow 3s ease-in-out infinite;
+}
+
+@keyframes leadership-top-card-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(242, 183, 5, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(242, 183, 5, 0.12);
+  }
+}
+
+#leadershipByTermContainer .leadership-level-group:first-of-type .org-card:hover {
+  animation: none; /* tắt nhấp nháy khi đang hover để không xung đột hiệu ứng nâng thẻ */
+  box-shadow: 0 14px 32px rgba(15, 55, 110, 0.16), 0 0 0 4px rgba(242, 183, 5, 0.2);
+}
+
+/* Ảnh đại diện: viền mềm hơn khi hover */
+#leadershipByTermContainer .org-card-img {
+  transition: transform var(--transition), border-color var(--transition);
+}
+
+#leadershipByTermContainer .org-card:hover .org-card-img {
+  transform: scale(1.05);
+}
+
+/* --------- Tôn trọng "giảm chuyển động" --------- */
+@media (prefers-reduced-motion: reduce) {
+  #leadershipByTermContainer .org-level-section-title::before,
+  #leadershipByTermContainer .leadership-level-group:first-of-type .org-card {
+    animation: none;
+  }
+}
+
+@media (max-width: 600px) {
+  #leadershipByTermContainer .org-level-section-title {
+    font-size: 1.15rem;
+  }
+}
+
+/* =======================================================
+   ĐỒNG BỘ TIÊU ĐỀ "HÌNH ẢNH HOẠT ĐỘNG" (thu-vien.html) VỚI
+   PHONG CÁCH #news-heading / #announcements-heading đã có —
+   scope riêng theo #gallery-heading nên KHÔNG ảnh hưởng các
+   heading khác đang dùng chung .section-title.
+   ======================================================= */
+#gallery-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #0d1b2a;
+  letter-spacing: -0.01em;
+  margin-bottom: 28px;
+}
+
+.gallery-icon {
+  display: inline-flex;
+  font-size: 1.6rem;
+  line-height: 1;
+  animation: gallery-icon-wiggle 2s ease-in-out infinite;
+  transform-origin: 50% 70%;
+}
+
+@keyframes gallery-icon-wiggle {
+  0%, 70%, 100% { transform: rotate(0deg) scale(1); }
+  80% { transform: rotate(-8deg) scale(1.05); }
+  90% { transform: rotate(8deg) scale(1.05); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-icon {
+    animation: none;
+  }
+}
+
+@media (max-width: 600px) {
+  #gallery-heading {
+    font-size: 1.5rem;
+  }
+  .gallery-icon {
+    font-size: 1.25rem;
+  }
+}
+
+/* =======================================================================
+   REDESIGN TRANG LIÊN HỆ (lien-he.html) — chỉ scope qua .contact-layout /
+   #contact-info-heading / #contact-form-heading / #contactMessage-status
+   nên KHÔNG ảnh hưởng gì tới các trang khác. Tái dùng lại 2 keyframe
+   "icon-nod" và "icon-target-pulse" đã có sẵn (từ trang Giới thiệu) thay
+   vì tạo animation trùng lặp. Không sửa gì HTML/JS ngoài 2 dòng tiêu đề
+   đã hướng dẫn ở trên.
+   ======================================================================= */
+
+/* --------- Khung bọc chung: panel trắng bo góc lớn + glow góc --------- */
+.contact-layout {
+  position: relative;
+  overflow: hidden;
+  background-color: #ffffff;
+  border: 1px solid rgba(33, 150, 243, 0.08);
+  border-radius: 32px;
+  padding: 48px 44px;
+  box-shadow: 0 10px 32px rgba(15, 55, 110, 0.06);
+}
+
+.contact-layout::before {
+  content: "";
+  position: absolute;
+  top: -90px;
+  right: -90px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(33, 150, 243, 0.08), transparent 70%);
+  pointer-events: none;
+}
+
+/* --------- Tiêu đề 2 cột: icon + gạch chân accent, đồng bộ các
+   heading khác trong site (#news-heading, #gallery-heading...) --------- */
+#contact-info-heading,
+#contact-form-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #0d1b2a;
+  letter-spacing: -0.01em;
+  position: relative;
+  padding-bottom: 14px;
+  margin-bottom: 28px;
+}
+
+#contact-info-heading::after,
+#contact-form-heading::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 56px;
+  height: 4px;
+  border-radius: 999px;
+}
+
+#contact-info-heading::after {
+  background: linear-gradient(90deg, #2196f3, #64b5f6);
+}
+
+#contact-form-heading::after {
+  background: linear-gradient(90deg, #f2b705, #ffca28);
+}
+
+.contact-info-icon,
+.contact-form-icon {
+  display: inline-flex;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.contact-info-icon {
+  animation: icon-nod 2.4s ease-in-out infinite;
+  transform-origin: 50% 80%;
+}
+
+.contact-form-icon {
+  animation: icon-target-pulse 1.8s ease-in-out infinite;
+}
+
+/* --------- Đường phân cách kiểu "tem thư xé đôi" giữa 2 cột (chỉ
+   desktop) + icon phong bì bồng bềnh — điểm nhấn riêng của trang --------- */
+.contact-form-wrapper {
+  position: relative;
+}
+
+@media (min-width: 801px) {
+  .contact-form-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -24px;
+    border-left: 2px dashed rgba(33, 150, 243, 0.25);
+  }
+
+  .contact-form-wrapper::after {
+    content: "✉️";
+    position: absolute;
+    left: -24px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    background-color: #ffffff;
+    border: 2px solid rgba(33, 150, 243, 0.25);
+    border-radius: 50%;
+    box-shadow: 0 4px 14px rgba(33, 150, 243, 0.18);
+    animation: contact-envelope-float 3s ease-in-out infinite;
+  }
+}
+
+@keyframes contact-envelope-float {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -50%) translateY(-6px); }
+}
+
+/* --------- Ô thông tin liên hệ: chuyển thành "card" có huy hiệu icon,
+   nâng nhẹ khi hover (giữ nguyên .contact-icon-logo local style trong
+   lien-he.html — logo 24px vẫn nằm gọn giữa huy hiệu 44px mới) --------- */
+.contact-info-item {
+  padding: 18px 20px;
+  border-radius: 18px;
+  background-color: var(--color-bg-alt);
+  margin-bottom: 16px;
+  transition: transform var(--transition), box-shadow var(--transition), background-color var(--transition);
+}
+
+.contact-info-item:last-child {
+  margin-bottom: 0;
+}
+
+.contact-info-item:hover {
+  transform: translateY(-3px);
+  background-color: #ffffff;
+  box-shadow: 0 10px 24px rgba(15, 55, 110, 0.08);
+}
+
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  font-size: 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.contact-info-item strong {
+  font-size: 0.95rem;
+  color: #0d1b2a;
+}
+
+.contact-info-item p {
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.contact-info-item a {
+  color: #1565c0;
+}
+
+.contact-info-item a:hover {
+  text-decoration: underline;
+}
+
+/* --------- Form: input/textarea bo tròn mềm, focus ring xanh --------- */
+.contact-form label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0d1b2a;
+}
+
+.contact-form input,
+.contact-form textarea {
+  border: 1.5px solid var(--color-border);
+  border-radius: 14px;
+  background-color: #ffffff;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #2196f3;
+  box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.12);
+}
+
+.contact-form textarea {
+  min-height: 130px;
+}
+
+/* --------- Nút gửi: pill gradient + mũi tên trượt khi hover --------- */
+.contact-form .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #2196f3, #1565c0);
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(33, 150, 243, 0.35);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.contact-form .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(33, 150, 243, 0.45);
+}
+
+.contact-form .btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.contact-form .btn-primary::after {
+  content: "➤";
+  font-size: 0.8rem;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+.contact-form .btn-primary:hover::after {
+  transform: translateX(3px);
+}
+
+.contact-form .btn-primary:disabled::after {
+  opacity: 0;
+}
+
+/* --------- Thông báo kết quả gửi (thành công/lỗi): scope riêng theo id
+   nên không đụng tới các .admin-message dùng ở nơi khác --------- */
+#contactMessage-status {
+  margin-top: 16px;
+  border-radius: 14px;
+  padding: 12px 16px;
+  font-weight: 600;
+}
+
+@media (max-width: 800px) {
+  .contact-layout {
+    padding: 32px 22px;
+    border-radius: 24px;
+  }
+}
+
+/* =======================================================================
+   FIX: CHẶN TRÀN NGANG TOÀN TRANG (an toàn, không phụ thuộc từng phần tử)
+   ======================================================================= */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* =======================================================================
+   FIX v2: SƠ ĐỒ TỔ CHỨC VẪN BỊ CẮT (co-cau-to-chuc.html)
+   Nguyên nhân sâu hơn: #orgPositionsList là flex container khiến
+   .org-tree-chart (flex item con) bị "phình" theo đúng chiều rộng nội
+   dung thay vì co lại theo khung cha, nên overflow-x: auto không có cơ
+   hội kích hoạt (không có gì để cuộn bên trong nó nữa, mà toàn bộ khối
+   tràn ra ngoài rồi bị html,body{overflow-x:hidden} cắt cụt 2 bên).
+   Cách sửa: bỏ display:flex ở #orgPositionsList (chỉ có 1 con nên không
+   cần flex để canh giữa) -> .org-tree-chart trở lại thành 1 khối block
+   bình thường, LUÔN chiếm đúng 100% khung cha -> overflow-x:auto lúc
+   này hoạt động 100% chắc chắn (không còn phụ thuộc quy tắc min-width
+   tự động của flexbox nữa).
+   ======================================================================= */
+#orgPositionsList {
+  display: block !important;
+}
+
+.org-tree-chart {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* cuộn mượt trên iOS */
+}
+
+@media (max-width: 600px) {
+  .org-tree-chart {
+    background:
+      linear-gradient(to right, var(--color-bg) 0, transparent 24px),
+      linear-gradient(to left, var(--color-bg) 0, transparent 24px) right;
+    background-attachment: local, local;
+  }
+}
+
+/* =======================================================================
+   FIX v5 (THAY THẾ HOÀN TOÀN v3 + v4): scale sơ đồ vừa khít màn hình
+   Chỉ giữ lại phần cần thiết tối thiểu — không dùng width:max-content/
+   overflow-x:visible nữa vì gây đo sai kích thước trong JS. Việc đo kích
+   thước thật giờ do JS tự xử lý bằng bản sao ẩn (xem co-cau-to-chuc.js),
+   không phụ thuộc CSS ở đây nữa.
+   ======================================================================= */
+#orgPositionsList {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.org-tree-chart {
+  transform-origin: top center;
+  will-change: transform;
+}
+
+.org-tree-branch,
+.org-tree-stack-box {
+  flex-shrink: 0;
+}
+
+/* ===================== KHỐI VIDEO (Admin — content blocks) ===================== */
+.content-block-video-preview {
+  max-width: 100%;
+  max-height: 140px;
+  border-radius: 6px;
+  display: block;
+}
+
+.content-block-video-embed-preview {
+  position: relative;
+  width: 100%;
+  max-width: 220px;
+  aspect-ratio: 16 / 9;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.content-block-video-embed-preview iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.content-block-video-tag {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+}
+
+.content-block-video-url-input {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  padding: 6px 8px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.85rem;
+}
+
+/* ===================== KHỐI VIDEO (trang công khai — Tin tức/
+   Thành tích/Sự kiện chi tiết) ===================== */
+.news-detail-block-video-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  aspect-ratio: 16 / 9;
+  margin: 20px auto;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background-color: #000;
+}
+
+.news-detail-block-video-wrap iframe,
+.news-detail-block-video-wrap video {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.content-blocks-toolbar .btn-add-text-block,
+.content-blocks-toolbar .btn-add-image-block-label {
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  color: #f8f7f7;
+  font-weight: 600;
+}
+
+.content-blocks-toolbar .btn-add-text-block:hover,
+.content-blocks-toolbar .btn-add-image-block-label:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+/* =======================================================================
+   ĐỔI MÀU 2 NÚT VIDEO ("+ Tải video lên" / "+ Dán link video") trong
+   khối "Nội dung chi tiết bài viết" ở trang admin-news.html.
+   Trước đây 2 nút này chưa có rule màu riêng nên chỉ hiện style mặc
+   định (xám mờ, giống bị khóa). Giờ tách riêng màu VÀNG (--color-secondary)
+   để phân biệt với 2 nút chữ/ảnh đang màu xanh lá đậm, đồng thời vẫn
+   đồng bộ tông màu 2026 của site. Dán vào CUỐI file style.css.
+   ======================================================================= */
+.content-blocks-toolbar .btn-add-video-upload-label,
+.content-blocks-toolbar .btn-add-video-embed {
+  background-color: var(--color-secondary);
+  border: 1px solid var(--color-secondary);
+  color: var(--color-primary-dark);
+  font-weight: 600;
+}
+
+.content-blocks-toolbar .btn-add-video-upload-label:hover,
+.content-blocks-toolbar .btn-add-video-embed:hover {
+  background-color: #e0a800;
+  border-color: #e0a800;
+}
+
+.btn-add-video-upload-label {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* =======================================================================
+   FIX: THÊM KHOẢNG CÁCH DƯỚI CÙNG CHO TRANG "CHỈ HUY QUA CÁC NHIỆM KỲ"
+   Nhóm cấp bậc cuối cùng (VD "Trưởng ban") đang nằm sát footer vì
+   #leadershipByTermContainer chưa có margin/padding dưới. Chỉ scope
+   riêng theo id này nên không ảnh hưởng các trang khác.
+   ======================================================================= */
+#leadershipByTermContainer {
+  margin-bottom: 60px;
+}
+
+@media (max-width: 600px) {
+  #leadershipByTermContainer {
+    margin-bottom: 40px;
+  }
+}
+
+/* FIX: tách vạch vàng dưới tiêu đề "Toàn bộ tin tức" ra xa chữ hơn */
+#news-heading {
+  padding-bottom: 22px; /* tăng từ 14px lên 22px, tùy chỉnh thêm nếu muốn xa hơn nữa */
+}
+
+/* FIX: tách vạch vàng dưới tiêu đề "Toàn bộ tin tức" ra xa chữ hơn */
+#news-heading {
+  padding-bottom: 32px; /* tăng dần nếu vẫn còn sát: 40px, 48px... */
+}
+
+/* FIX: tách vạch vàng dưới tiêu đề "Toàn bộ tin tức" ra xa các nút lọc bên dưới */
+.section-header-row:has(#news-heading) {
+  margin-bottom: 44px; /* tăng thêm nếu vẫn còn sát: 56px, 64px... */
+}
+
+/* FIX: tách hàng nút lọc (Tất cả/Hoạt động/Giới thiệu) ra xa vạch vàng phía trên */
+.news-filters {
+  margin-top: 30px; /* tăng thêm nếu vẫn còn sát: 40px, 50px... */
+}
+
+/* Điều chỉnh lại: đưa tiêu đề gần vạch vàng hơn 1 chút */
+#news-heading {
+  padding-bottom: 4px; /* giảm xuống nếu vẫn còn xa: 14px, 10px... */
+}
+
+/* FIX: bỏ gạch chân nhỏ dưới tiêu đề mỗi nhiệm kỳ (VD "Nhiệm kì lâm thời • 2025-2026") */
+#leadershipByTermContainer .org-level-section-title::after {
+  content: none;
+}
+
+/* FIX: bỏ gạch chân nhỏ dưới 2 tiêu đề "Thông tin liên hệ" / "Gửi tin nhắn cho chúng tôi" */
+#contact-info-heading::after,
+#contact-form-heading::after {
+  content: none;
+}
+
+/* FIX: đổi chỗ thanh tìm kiếm và nút Đăng nhập/Trang quản trị trên menu
+   (thanh tìm kiếm hiện trước, nút đăng nhập/quản trị ra ngoài cùng bên phải) */
+@media (min-width: 861px) {
+  .main-nav .search-form {
+    order: 1 !important;
+  }
+
+  .nav-list .auth-control {
+    order: 2 !important;
+  }
+}
+
+/* FIX: ngôi sao trong badge "Đội chi huy" / "Trưởng ban" to hơn + cách chữ xa hơn */
+#leadershipByTermContainer .leadership-level-title::before {
+  font-size: 0.95rem;
+  margin-right: 4px;
+}
+
+/* FIX: đổi chữ "Đội TNXK" và dòng khẩu hiệu "Xung kích - Sáng tạo - Đoàn kết" sang màu đen */
+.site-name {
+  color: #000000;
+}
+
+.slogan {
+  color: #000000;
+}
+
+/* FIX v2: phóng to icon trong nút "Fanpage Đoàn trường" / "Fanpage Đội TNXK" / "Sự kiện sắp diễn ra" */
+.quick-links .quick-link-item img,
+.quick-links .quick-link-item svg {
+  width: 200x !important;
+  height: 200px !important;
+  flex-shrink: 0;
+}
+
+/* FIX v3: phóng to icon "quick-link-icon-img" (đè style nội tuyến trong HTML) */
+.quick-link-icon-img {
+  width: 200px !important;
+  height: 200px !important;
+}
+
+/* FIX: PHÓNG TO ICON TRONG 2 NÚT "Fanpage Đoàn trường" / "Fanpage Đội TNXK"
+   Ghi đè đúng selector .announcements-layout .quick-link-item .quick-link-icon-img
+   (đang có !important + độ đặc hiệu cao hơn rule .quick-link-icon-img ở cuối file
+   nên rule cũ 22px vẫn đang thắng dù nằm trước trong file) */
+.announcements-layout .quick-link-item .quick-link-icon-img {
+  width: 45px !important;
+  height: 45px !important;
+}
+
+/* =======================================================================
+   ANIMATION CHO 3 NÚT "LIÊN KẾT NHANH" (Fanpage Đoàn trường / Fanpage
+   Đội TNXK / Sự kiện sắp diễn ra) — icon đung đưa nhẹ liên tục + hiệu
+   ứng ánh sáng lướt qua khi hover. Chỉ thêm mới, scope theo
+   .quick-links nên không ảnh hưởng nơi khác.
+   ======================================================================= */
+
+/* --- Icon 2 logo tròn (Đoàn trường / TNXK): đung đưa nhẹ như lá cờ --- */
+.quick-links .quick-link-item:nth-child(1) .quick-link-icon-img,
+.quick-links .quick-link-item:nth-child(2) .quick-link-icon-img {
+  animation: quick-link-icon-sway 3s ease-in-out infinite;
+  transform-origin: 50% 85%;
+}
+
+@keyframes quick-link-icon-sway {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-6deg); }
+  75% { transform: rotate(6deg); }
+}
+
+/* --- Icon lịch 📅 (Sự kiện sắp diễn ra): nhảy nhẹ lên xuống --- */
+.quick-links .quick-link-item:nth-child(3) .quick-link-icon {
+  display: inline-block;
+  animation: quick-link-icon-bounce 1.8s ease-in-out infinite;
+}
+
+@keyframes quick-link-icon-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* --- Hiệu ứng ánh sáng lướt qua khi hover vào từng nút --- */
+.quick-links .quick-link-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.quick-links .quick-link-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.quick-links .quick-link-item:hover::before {
+  left: 130%;
+}
+
+/* Tôn trọng người dùng đã bật "giảm chuyển động" trong hệ điều hành */
+@media (prefers-reduced-motion: reduce) {
+  .quick-links .quick-link-item:nth-child(1) .quick-link-icon-img,
+  .quick-links .quick-link-item:nth-child(2) .quick-link-icon-img,
+  .quick-links .quick-link-item:nth-child(3) .quick-link-icon {
+    animation: none;
+  }
+
+  .quick-links .quick-link-item::before {
+    display: none;
+  }
+}
+
+/* FIX: 2 nút Fanpage bị cắt chữ trên mobile do dính "white-space: nowrap"
+   sót lại từ 1 rule mobile cũ, chưa được ghi đè khi đổi sang layout xuống hàng */
+@media (max-width: 800px) {
+  .announcements-layout .quick-link-item {
+    white-space: normal;
+    text-align: center;
+    line-height: 1.3;
+  }
+}
+
+/* FIX: bố cục dòng thông báo trong admin-announcements.html bị lệch.
+   .admin-announcement-row chỉ có 2 phần tử con (fields + actions), không
+   có ảnh đại diện như .admin-position-row gốc (vốn thiết kế cho 3 cột:
+   80px ảnh + 1fr nội dung + auto nút). Vì thiếu 1 phần tử, grid tự động
+   nhét .admin-position-fields vào cột 80px (quá hẹp) và đẩy
+   .admin-position-actions vào cột 1fr (quá rộng) -> đúng lỗi trong ảnh.
+   Định nghĩa lại grid riêng cho đúng 2 cột thực tế. */
+.admin-announcement-row {
+  grid-template-columns: 1fr 160px;
+  gap: 20px;
+}
+
+/* 4 cặp label/input xếp 2 cột cho gọn, đỡ dài lê thê theo chiều dọc */
+.admin-announcement-row .admin-position-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 16px;
+}
+
+/* Nút Lưu/Xóa: đưa về kích thước vừa phải, không full-width nữa,
+   xếp dọc và neo xuống đáy cột cho cân với khối field bên trái */
+.admin-announcement-row .admin-position-actions {
+  justify-content: flex-end;
+}
+
+.admin-announcement-row .admin-position-actions .btn {
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .admin-announcement-row {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-announcement-row .admin-position-fields {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== FIX TRÀN NGANG TRANG LIÊN HỆ (MOBILE) ===== */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Đảm bảo mọi phần tử tính padding/border vào trong width, không bị tràn ra ngoài */
+.contact-info-item,
+.info-card,
+.contact-card,
+.lien-he-container,
+.lien-he-content {
+  box-sizing: border-box;
+  max-width: 100%;
+  width: 100%;
+}
+
+/* Chữ dài như email, địa chỉ không bị tràn ra khỏi khung */
+.contact-info-item p,
+.contact-info-item span,
+.contact-info-item a,
+.info-card p,
+.info-card span,
+.info-card a {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
+@media (max-width: 480px) {
+  .contact-info-item,
+  .info-card {
+    padding-right: 12px;
+  }
+}
+
+/* ===== FIX MẤT CHỮ SLOGAN TRÊN MÀN HÌNH NHỎ ===== */
+@media (max-width: 400px) {
+  .site-title,
+  .logo-text,
+  .header-title,
+  .slogan {
+    white-space: normal;      /* cho phép xuống dòng thay vì cắt chữ */
+    overflow: visible;
+    text-overflow: unset;
+    word-break: keep-all;
+    max-width: 100%;
+    font-size: 13px;          /* giảm cỡ chữ một chút cho vừa khung */
+    line-height: 1.3;
+  }
+
+  .header-logo-wrapper,
+  .logo-container {
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đội TNXK - Sự kiện</title>
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/LOGO-ĐTNXK-favicon.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style-registration.css" />
+  <style>
+    #events-heading.section-title {
+      display: flex;
+      align-items: center;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-weight: 800;
+      font-size: 28px;
+      color: #1a1a1a;
+      letter-spacing: -0.3px;
+    }
+    .section-title-icon {
+      display: inline-block;
+      font-size: 32px;
+      margin-right: 10px;
+      animation: iconBounce 1.6s ease-in-out infinite;
+    }
+    @keyframes iconBounce {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-4px) rotate(-6deg); }
+      50% { transform: translateY(0) rotate(0deg); }
+      75% { transform: translateY(-2px) rotate(6deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-link">
+        <img src="assets/LOGO-ĐTNXK.png" alt="Logo Đội TNXK" class="logo-img" />
+        <span class="site-name">
+          Đội TNXK
+          <small class="slogan">Xung kích - Sáng tạo - Đoàn kết</small>
+        </span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Mở menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav" id="mainNav">
+        <ul class="nav-list">
+          <li><a href="index.html">Trang chủ</a></li>
+          <li class="nav-item-dropdown">
+            <a href="gioi-thieu.html" class="nav-dropdown-toggle">
+              Giới thiệu
+              <svg class="nav-dropdown-arrow" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false">
+                <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6" />
+              </svg>
+            </a>
+            <ul class="nav-dropdown-menu">
+              <li><a href="co-cau-to-chuc.html">Cơ cấu tổ chức</a></li>
+              <li><a href="chi-huy-qua-cac-nhiem-ky.html">Các đời chỉ huy</a></li>
+            </ul>
+          </li>
+          <li><a href="tin-tuc.html">Tin tức</a></li>
+          <li><a href="su-kien.html" class="active">Sự kiện</a></li>
+          <li><a href="thu-vien.html">Thư viện ảnh</a></li>
+          <li><a href="lien-he.html">Liên hệ</a></li>
+          <li class="auth-control" id="authControl">
+            <a href="admin-login.html" class="login-link" id="loginLink">Đăng nhập</a>
+          </li>
+        </ul>
+
+        <form class="search-form" id="searchForm" role="search">
+          <input type="search" id="searchInput" name="q" placeholder="Tìm kiếm tin tức..." aria-label="Tìm kiếm tin tức" />
+          <button type="submit" aria-label="Tìm kiếm">🔍</button>
+        </form>
+
+      </nav>
+    </div>
+  </header>
+
+  <div class="ticker-tape" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-item"><span class="ticker-star">★</span>Xung kích</span>
+      <span class="ticker-item"><span class="ticker-star">★</span>Sáng tạo</span>
+      <span class="ticker-item"><span class="ticker-star">★</span>Đoàn kết</span>
+      <span class="ticker-item"><span class="ticker-star">★</span>Xung kích</span>
+      <span class="ticker-item"><span class="ticker-star">★</span>Sáng tạo</span>
+      <span class="ticker-item"><span class="ticker-star">★</span>Đoàn kết</span>
+      <span class="ticker-item"><span class="ticker-star">★</span>Xung kích</span>
+      <span class="ticker-item"><span class="ticker-star">★</span>Sáng tạo</span>
+      <span class="ticker-item"><span class="ticker-star">★</span>Đoàn kết</span>
+      <span class="ticker-item"><span class="ticker-star">★</span>Xung kích</span>
+      <span class="ticker-item"><span class="ticker-star">★</span>Sáng tạo</span>
+      <span class="ticker-item"><span class="ticker-star">★</span>Đoàn kết</span>
+      <span class="ticker-item" aria-hidden="true"><span class="ticker-star">★</span>Xung kích</span>
+      <span class="ticker-item" aria-hidden="true"><span class="ticker-star">★</span>Sáng tạo</span>
+      <span class="ticker-item" aria-hidden="true"><span class="ticker-star">★</span>Đoàn kết</span>
+      <span class="ticker-item" aria-hidden="true"><span class="ticker-star">★</span>Xung kích</span>
+      <span class="ticker-item" aria-hidden="true"><span class="ticker-star">★</span>Sáng tạo</span>
+      <span class="ticker-item" aria-hidden="true"><span class="ticker-star">★</span>Đoàn kết</span>
+      <span class="ticker-item" aria-hidden="true"><span class="ticker-star">★</span>Xung kích</span>
+      <span class="ticker-item" aria-hidden="true"><span class="ticker-star">★</span>Sáng tạo</span>
+      <span class="ticker-item" aria-hidden="true"><span class="ticker-star">★</span>Đoàn kết</span>
+      <span class="ticker-item" aria-hidden="true"><span class="ticker-star">★</span>Xung kích</span>
+      <span class="ticker-item" aria-hidden="true"><span class="ticker-star">★</span>Sáng tạo</span>
+      <span class="ticker-item" aria-hidden="true"><span class="ticker-star">★</span>Đoàn kết</span>
+    </div>
+  </div>
+
+  <section class="page-banner">
+    <div class="container">
+      <h1>Sự kiện & Lịch hoạt động</h1>
+    </div>
+  </section>
+
+  <main class="container">
+    <section class="section" aria-labelledby="events-heading">
+      <h2 id="events-heading" class="section-title">
+        <span class="section-title-icon" aria-hidden="true">📅</span>Sự kiện sắp diễn ra
+      </h2>
+
+      <!-- Nội dung bên trong do JS lấy từ Supabase (bảng events),
+           mỗi sự kiện có nút "Đăng ký tham gia" mở ra 1 form nhỏ -->
+      <div id="eventsList" class="events-list">
+        <p class="loading-text">Đang tải sự kiện...</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Đội Thanh Niên Xung Kích. Mọi quyền được bảo lưu.</p>
+      <nav class="footer-nav">
+        <a href="gioi-thieu.html">Giới thiệu</a>
+        <a href="lien-he.html">Liên hệ</a>
+        <a href="https://www.facebook.com/share/1Arh91NyZb/?mibextid=wwXIfr/" target="_blank" rel="noopener">Fanpage Đội TNXK</a>
+        <a href="https://www.facebook.com/share/18B4nfBXqF/" target="_blank" rel="noopener">Fanpage Đoàn trường</a>
+        <a href="404.html">Trang lỗi (demo)</a>
+        <a href="admin-login.html" class="admin-footer-link">Đăng nhập</a>
+      </nav>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Quay về đầu trang">↑</button>
+
+  <!-- Khung phóng to ảnh (lightbox) — dùng chung, xử lý bằng
+       openLightbox()/initLightbox() trong js/main.js -->
+  <div id="lightbox" class="lightbox" hidden>
+    <button id="lightboxPrev" class="lightbox-nav lightbox-prev" aria-label="Ảnh trước">‹</button>
+    <button id="lightboxClose" class="lightbox-close" aria-label="Đóng">✕</button>
+    <img id="lightboxImg" src="" alt="" class="lightbox-img" />
+    <button id="lightboxNext" class="lightbox-nav lightbox-next" aria-label="Ảnh sau">›</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="data/sample-data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/su-kien.js"></script>
+</body>
+</html>

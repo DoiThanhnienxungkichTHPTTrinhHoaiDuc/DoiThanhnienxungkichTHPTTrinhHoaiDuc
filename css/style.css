@@ -7012,4 +7012,307 @@ html, body {
     flex-wrap: wrap;
     max-width: 100%;
   }
+} 
+
+/* =======================================================================
+   BANNER ĐẠI HỘI HỘI THANH NIÊN LIÊN KHỐI — nền đỏ vàng chuyển động,
+   máy bay giấy, sao lấp lánh, confetti, tiêu đề phát sáng.
+   Khung viền/bo góc/bóng đổ đồng bộ với .banner-img phía trên.
+   ======================================================================= */
+.dh-wrap {
+  padding: 8px 0 40px;
+  background: #ffffff;
+}
+
+.dh-banner {
+  position: relative;
+  overflow: hidden;
+  max-width: 1400px;
+  min-height: 280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 18px;
+  border: 6px solid #ffffff;
+  background: linear-gradient(120deg, #a80000, #e8212b, #ff7a1a, #ffc933, #e8212b, #a80000);
+  background-size: 300% 300%;
+  animation: dh-gradient 10s ease infinite;
+  box-shadow: 0 12px 40px rgba(200, 20, 20, 0.3);
+}
+
+.dh-content {
+  position: relative;
+  z-index: 2;
+  padding: 32px 20px;
+}
+
+.dh-line {
+  opacity: 0;
+  animation: dh-slide-in 0.8s ease forwards;
+}
+
+.dh-title {
+  font-size: clamp(2.2rem, 6vw, 5rem);
+  font-weight: 900;
+  letter-spacing: 4px;
+  line-height: 1.1;
+  color: #fff200;
+  animation:
+    dh-slide-in 0.8s ease 0.1s forwards,
+    dh-glow 2.5s ease-in-out 1s infinite;
+}
+
+.dh-title2 {
+  font-size: clamp(1.1rem, 3.4vw, 2.6rem);
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
+  animation-delay: 0.5s;
+}
+
+.dh-term {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 6px 28px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #c40000;
+  font-size: clamp(1rem, 2.2vw, 1.7rem);
+  font-weight: 800;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  animation-delay: 0.9s;
+}
+
+.dh-slogan {
+  margin-top: 12px;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 1px;
+  animation-delay: 1.3s;
+}
+
+/* Sao lấp lánh */
+.dh-star {
+  position: absolute;
+  z-index: 1;
+  color: #fff200;
+  text-shadow: 0 0 10px #ffffff;
+  animation: dh-twinkle 2s ease-in-out infinite;
+}
+.dh-star.s1 { top: 14%; left: 8%;   font-size: 28px; }
+.dh-star.s2 { top: 70%; left: 16%;  font-size: 18px; animation-delay: 0.5s; }
+.dh-star.s3 { top: 20%; right: 10%; font-size: 34px; animation-delay: 1s; }
+.dh-star.s4 { top: 75%; right: 18%; font-size: 20px; animation-delay: 1.5s; }
+.dh-star.s5 { top: 8%;  left: 48%;  font-size: 16px; animation-delay: 0.8s; }
+
+/* Máy bay giấy bay ngang */
+.dh-plane {
+  position: absolute;
+  z-index: 1;
+  left: -100px;
+  width: 64px;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));
+  animation: dh-fly 9s linear infinite;
+}
+.dh-plane.p1 { top: 62%; }
+.dh-plane.p2 { top: 18%; width: 44px; animation-duration: 12s; animation-delay: 4s; }
+
+/* Confetti (các mảnh được JS tạo ra) */
+.dh-confetti {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.dh-confetti i {
+  position: absolute;
+  top: -20px;
+  width: 8px;
+  height: 14px;
+  opacity: 0.9;
+  animation: dh-fall linear infinite;
+}
+
+@keyframes dh-gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+@keyframes dh-slide-in {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes dh-glow {
+  0%, 100% { text-shadow: 0 0 8px rgba(255, 242, 0, 0.5), 0 3px 6px rgba(0, 0, 0, 0.3); }
+  50%      { text-shadow: 0 0 28px #fff200, 0 0 50px #ffb300, 0 3px 6px rgba(0, 0, 0, 0.3); }
+}
+@keyframes dh-twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.7) rotate(0deg); }
+  50%      { opacity: 1;   transform: scale(1.25) rotate(25deg); }
+}
+@keyframes dh-fly {
+  0%   { transform: translateX(0) translateY(0) rotate(-6deg); }
+  50%  { transform: translateX(60vw) translateY(-30px) rotate(4deg); }
+  100% { transform: translateX(120vw) translateY(10px) rotate(-6deg); }
+}
+@keyframes dh-fall {
+  from { transform: translateY(0) rotate(0deg); }
+  to   { transform: translateY(360px) rotate(540deg); }
+}
+
+@media (max-width: 860px) {
+  .dh-wrap { padding: 4px 0 28px; }
+  .dh-banner {
+    min-height: 220px;
+    border-width: 4px;
+    border-radius: 12px;
+  }
+}
+
+/* Người dùng bật "giảm chuyển động": tắt animation, vẫn hiện đủ chữ */
+@media (prefers-reduced-motion: reduce) {
+  .dh-banner, .dh-line, .dh-title, .dh-star, .dh-plane, .dh-confetti i {
+    animation: none;
+  }
+  .dh-line { opacity: 1; }
+} 
+
+/* =======================================================================
+   NÂNG CẤP BANNER ĐẠI HỘI: dòng "NHIỆT LIỆT CHÀO MỪNG", tia sáng xoay,
+   chữ ĐẠI HỘI lấp lánh, viền trang trí, nút nhiệm kỳ nhấp nháy.
+   Chỉ thêm mới, các rule này nằm SAU nên tự đè lên rule .dh-* cũ.
+   ======================================================================= */
+
+/* --- Tia sáng xoay chậm phía sau chữ --- */
+.dh-rays {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 900px;
+  height: 900px;
+  margin: -450px 0 0 -450px;
+  z-index: 0;
+  pointer-events: none;
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgba(255, 255, 255, 0.16) 0deg 8deg,
+    transparent 8deg 24deg
+  );
+  -webkit-mask-image: radial-gradient(circle, #000 0%, transparent 65%);
+  mask-image: radial-gradient(circle, #000 0%, transparent 65%);
+  animation: dh-rays-spin 40s linear infinite;
+}
+
+@keyframes dh-rays-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* --- Dòng "NHIỆT LIỆT CHÀO MỪNG" kiểu băng rơn --- */
+.dh-welcome {
+  margin-bottom: 6px;
+  animation-delay: 0s;
+}
+
+.dh-welcome-text {
+  display: inline-block;
+  position: relative;
+  padding: 6px 34px;
+  font-size: clamp(0.85rem, 2.4vw, 1.6rem);
+  font-weight: 800;
+  letter-spacing: 0.35em;
+  color: #fff8d6;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  border-top: 2px solid rgba(255, 242, 0, 0.85);
+  border-bottom: 2px solid rgba(255, 242, 0, 0.85);
+}
+
+/* Hai ngôi sao nhỏ hai đầu dòng chữ */
+.dh-welcome-text::before,
+.dh-welcome-text::after {
+  content: "★";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff200;
+  font-size: 0.8em;
+  letter-spacing: 0;
+  text-shadow: 0 0 10px #ffffff;
+  animation: dh-twinkle 2s ease-in-out infinite;
+}
+.dh-welcome-text::before { left: 4px; }
+.dh-welcome-text::after  { right: 4px; animation-delay: 1s; }
+
+/* --- Chữ "ĐẠI HỘI": lớp ánh sáng lướt ngang --- */
+.dh-title-text {
+  display: inline-block;
+  background: linear-gradient(
+    100deg,
+    #fff200 35%,
+    #ffffff 47%,
+    #fff9b0 50%,
+    #ffffff 53%,
+    #fff200 65%
+  );
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0 3px 6px rgba(120, 0, 0, 0.45));
+  animation: dh-title-shimmer 4s linear infinite;
+}
+
+@keyframes dh-title-shimmer {
+  from { background-position: 250% center; }
+  to   { background-position: -250% center; }
+}
+
+/* Tắt glow cũ (text-shadow không hoạt động với chữ trong suốt),
+   chỉ giữ hiệu ứng trượt vào */
+.dh-title {
+  animation: dh-slide-in 0.8s ease 0.1s forwards;
+}
+
+/* --- Nút NHIỆM KỲ 1: nhấp nháy nhẹ --- */
+.dh-term {
+  animation:
+    dh-slide-in 0.8s ease 0.9s forwards,
+    dh-term-pulse 2.4s ease-in-out 2s infinite;
+}
+
+@keyframes dh-term-pulse {
+  0%, 100% { transform: scale(1);    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2); }
+  50%      { transform: scale(1.06); box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.25), 0 6px 18px rgba(0, 0, 0, 0.25); }
+}
+
+/* --- Nội dung nằm trên tia sáng --- */
+.dh-content {
+  z-index: 2;
+}
+
+/* --- Viền vàng mảnh bên trong khung banner --- */
+.dh-banner::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  z-index: 1;
+  border: 2px solid rgba(255, 242, 0, 0.55);
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+@media (max-width: 860px) {
+  .dh-rays { width: 600px; height: 600px; margin: -300px 0 0 -300px; }
+  .dh-welcome-text { padding: 5px 26px; letter-spacing: 0.2em; }
+  .dh-banner::after { inset: 6px; border-radius: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dh-rays, .dh-title-text, .dh-term,
+  .dh-welcome-text::before, .dh-welcome-text::after {
+    animation: none;
+  }
+  .dh-title { opacity: 1; }
+  .dh-title-text { -webkit-text-fill-color: #fff200; color: #fff200; }
 }

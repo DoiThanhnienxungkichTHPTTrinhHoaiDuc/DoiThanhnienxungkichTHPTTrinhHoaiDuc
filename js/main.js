@@ -644,4 +644,26 @@ function initBackToTop() {
   btn.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
-}
+} 
+
+/* =======================================================
+   BANNER ĐẠI HỘI: tạo các mảnh confetti rơi.
+   Tự bỏ qua nếu trang không có #dhConfetti, hoặc người dùng
+   bật "giảm chuyển động" trong hệ điều hành.
+   ======================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+  const box = document.getElementById("dhConfetti");
+  if (!box) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const colors = ["#fff200", "#ffffff", "#ffb300", "#ff4d4d", "#ffd9a0"];
+  for (let i = 0; i < 28; i++) {
+    const piece = document.createElement("i");
+    piece.style.left = Math.random() * 100 + "%";
+    piece.style.background = colors[i % colors.length];
+    piece.style.animationDuration = 4 + Math.random() * 4 + "s";
+    piece.style.animationDelay = -Math.random() * 6 + "s";
+    piece.style.borderRadius = i % 3 === 0 ? "50%" : "2px";
+    box.appendChild(piece);
+  }
+});
